@@ -16,13 +16,19 @@ COPY apps/backend/ ./
 ENV NODE_ENV=production
 ENV MEDUSA_ADMIN_ONBOARDING_TYPE=none
 ENV DISABLE_MEDUSA_ADMIN=false
-ENV MEDUSA_BACKEND_URL=http://localhost:9000
+ENV ADMIN_AUTH_TYPE=jwt
+ENV ADMIN_JWT_TOKEN_STORAGE_KEY=medusa_admin_auth_token
+ENV MEDUSA_BACKEND_URL=/
 ENV DATABASE_URL=postgres://postgres:postgres@localhost:5432/medusa?sslmode=disable
 ENV REDIS_URL=redis://localhost:6379
 ENV JWT_SECRET=temp_secret
 ENV COOKIE_SECRET=temp_secret
 
-RUN npx medusa build
+# Replace the checked-in admin bundle with the freshly built Medusa admin output.
+RUN rm -rf ./public/admin \
+  && npx medusa build \
+  && mkdir -p ./public \
+  && cp -R ./.medusa/server/public/admin ./public/admin
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 medusa
