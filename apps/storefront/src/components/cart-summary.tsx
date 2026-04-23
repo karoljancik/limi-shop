@@ -31,11 +31,15 @@ export function CartSummary() {
   }, []);
 
   if (loading) {
-    return <p className="text-sm text-[var(--muted)]">Nacitavam kosik...</p>;
+    return <p className="text-sm text-[var(--muted)]">Načítavam košík...</p>;
   }
 
   if (!cart || cart.items.length === 0) {
-    return <p data-testid="empty-cart" className="text-sm text-[var(--muted)]">Kosik je zatial prazdny.</p>;
+    return (
+      <p data-testid="empty-cart" className="text-sm text-[var(--muted)]">
+        Košík je zatiaľ prázdny.
+      </p>
+    );
   }
 
   return (
@@ -60,7 +64,7 @@ export function CartSummary() {
               {item.product_title}
             </Link>
             <p className="mt-1 text-sm text-[var(--muted)]">
-              Mnozstvo: {item.quantity}
+              Množstvo: {item.quantity}
             </p>
           </div>
           <p className="font-semibold">{formatPrice(item.unit_price)}</p>
@@ -69,10 +73,13 @@ export function CartSummary() {
 
       <div className="card p-5">
         <div className="flex items-center justify-between text-sm text-[var(--muted)]">
-          <span>Medzisucet</span>
+          <span>Medzisúčet</span>
           <span>{formatPrice(cart.subtotal, cart.currency_code)}</span>
         </div>
-        <div className="mt-3 flex items-center justify-between text-lg font-bold" data-testid="cart-total">
+        <div
+          className="mt-3 flex items-center justify-between text-lg font-bold"
+          data-testid="cart-total"
+        >
           <span>Spolu</span>
           <span>{formatPrice(cart.total, cart.currency_code)}</span>
         </div>

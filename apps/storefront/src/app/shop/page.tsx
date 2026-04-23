@@ -8,11 +8,10 @@ export default async function ShopPage() {
   return (
     <div className="page-shell py-10 md:py-14">
       <div className="mb-8 space-y-3">
-        <p className="eyebrow">Shop</p>
+        <p className="eyebrow">Obchod</p>
         <h1 className="text-4xl font-black">Limi obchod</h1>
         <p className="max-w-2xl text-[var(--muted)]">
-          Produkty su tahane priamo z Medusa backendu aj s vypocitanou cenou pre
-          slovensky region.
+          Vyber si nálepky, ktoré potešia malé ruky aj veľkú fantáziu.
         </p>
       </div>
 

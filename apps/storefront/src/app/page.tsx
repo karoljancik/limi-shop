@@ -13,18 +13,17 @@ export default async function Home() {
           <div className="space-y-6">
             <p className="eyebrow">Limi stickersss</p>
             <h1 className="max-w-3xl text-5xl font-black leading-none tracking-tight md:text-7xl">
-              3D zazitkove nalepky pre pokojne tvorenie.
+              3D zážitkové nálepky pre pokojné tvorenie.
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-[var(--muted)]">
-              Headless storefront nad Medusou. Produkty uz bezia z vlastnej
-              databazy a frontend je pripraveny na dalsi rast.
+              Jemné motívy, hravé detaily a radosť z tvorenia pre deti aj rodičov.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/shop" className="btn-primary">
-                Otvorit obchod
+                Otvoriť obchod
               </Link>
               <Link href="/kosik" className="btn-secondary">
-                Pozriet kosik
+                Pozrieť košík
               </Link>
             </div>
           </div>
@@ -47,11 +46,11 @@ export default async function Home() {
       <section className="page-shell space-y-6">
         <div className="flex items-end justify-between gap-6">
           <div>
-            <p className="eyebrow">Vybrane produkty</p>
-            <h2 className="mt-2 text-3xl font-black">Prve Medusa produkty</h2>
+            <p className="eyebrow">Vybrané produkty</p>
+            <h2 className="mt-2 text-3xl font-black">Obľúbené kúsky</h2>
           </div>
           <Link href="/shop" className="btn-secondary">
-            Vsetky produkty
+            Všetky produkty
           </Link>
         </div>
 

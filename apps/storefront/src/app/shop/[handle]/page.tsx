@@ -21,7 +21,7 @@ export default async function ProductDetailPage({
   return (
     <div className="page-shell py-10 md:py-14">
       <Link href="/shop" className="text-sm font-medium text-[var(--muted)]">
-        ← Spat do shopu
+        ← Späť do obchodu
       </Link>
 
       <div className="mt-6 grid gap-8 md:grid-cols-[0.95fr_1.05fr]">

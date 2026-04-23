@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 const navItems = [
   { href: "/", label: "Domov" },
   { href: "/shop", label: "Obchod" },
-  { href: "/kosik", label: "Kosik" },
+  { href: "/kosik", label: "Košík" },
 ];
 
 export function SiteHeader() {
@@ -74,15 +74,15 @@ export function SiteHeader() {
             alt="LiMi"
             width={160}
             height={80}
-            className="site-header__logo h-auto w-auto"
+            className="site-header__logo"
             priority
           />
           <span className="site-header__brand-text">
-            Nalepky pre male ruky a velku fantaziu
+            Nálepky pre malé ruky a veľkú fantáziu
           </span>
         </Link>
 
-        <nav className="site-header__nav" aria-label="Hlavna navigacia">
+        <nav className="site-header__nav" aria-label="Hlavná navigácia">
           {navItems.map((item) => {
             const isActive =
               item.href === "/"
@@ -100,7 +100,7 @@ export function SiteHeader() {
             );
           })}
           <Link href="/shop" className="site-header__cta">
-            Objavit nalepky
+            Objaviť nálepky
           </Link>
         </nav>
       </div>

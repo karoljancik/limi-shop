@@ -17,15 +17,15 @@ export function AddToCartButton({ variantId }: { variantId: string }) {
           startTransition(async () => {
             try {
               await addVariantToCart(variantId);
-              setMessage("Produkt bol pridany do kosika.");
+              setMessage("Produkt bol pridaný do košíka.");
             } catch {
-              setMessage("Nepodarilo sa pridat produkt do kosika.");
+              setMessage("Nepodarilo sa pridať produkt do košíka.");
             }
           });
         }}
         disabled={isPending}
       >
-        {isPending ? "Pridavam..." : "Pridat do kosika"}
+        {isPending ? "Pridávam..." : "Pridať do košíka"}
       </button>
       {message ? <p className="text-sm text-[var(--muted)]">{message}</p> : null}
     </div>

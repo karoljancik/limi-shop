@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Limi Storefront",
-  description: "Headless storefront pre Limi nalepky postaveny na Next.js a Medusa.",
+  title: "Limi",
+  description: "Hravé 3D nálepky pre pokojné tvorenie a detskú fantáziu.",
 };
 
 export default function RootLayout({
