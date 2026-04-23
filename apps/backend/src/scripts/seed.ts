@@ -64,10 +64,7 @@ export default async function seedLimiData({ container }: ExecArgs) {
     fields: ["id"],
   });
 
-  if (existingProducts.data?.length) {
-    logger.info("Seed skipped: products already exist in the database.");
-    return;
-  }
+  const productsAlreadyExist = Boolean(existingProducts.data?.length);
 
   logger.info("Seeding Limi store data...");
 
@@ -329,6 +326,14 @@ export default async function seedLimiData({ container }: ExecArgs) {
   });
 
   logger.info(`Publishable API Key: ${publishableApiKey.token}`);
+
+  if (productsAlreadyExist) {
+    logger.info(
+      "Products already exist in the database. Skipping product creation and ensuring store configuration only."
+    );
+    logger.info("Finished seeding Limi data.");
+    return;
+  }
 
   logger.info("Seeding product categories...");
   const { data: existingCategories } = await query.graph({

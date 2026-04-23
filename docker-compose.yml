@@ -84,9 +84,9 @@ services:
     container_name: limi-storefront
     restart: unless-stopped
     environment:
-      - NEXT_PUBLIC_MEDUSA_BACKEND_URL=http://localhost:9000
+      - NEXT_PUBLIC_MEDUSA_BACKEND_URL=http://localhost:9001
       - MEDUSA_BACKEND_URL=http://backend:9000
-      - NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY=pk_0e26b4584834db164e3cc6fd0d4959a9a03895dd543ea80757a8bad267591c18
+      - NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY=pk_b29c9f4f4d9bd5430a5442e93360b47dffeede2c05912a3fb729d89485fa74dc
     depends_on:
       backend:
         condition: service_healthy

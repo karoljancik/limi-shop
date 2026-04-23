@@ -17,8 +17,6 @@ if (!publishableKey) {
 
 export const MEDUSA_BACKEND_URL = publicBackendUrl;
 export const MEDUSA_PUBLISHABLE_KEY = publishableKey;
-export const MEDUSA_REGION_ID = "reg_01KPX1Y7RENYM45TNR5H3KQ5XY";
-
 const PRODUCT_IMAGE_BY_HANDLE: Record<string, string> = {
   "kapi-kupelne-nalepky-limi": "/products/stickers/kapi_limi.jpg",
   "mackova-pekaren-nalepky-limi": "/products/stickers/macko_limi.jpg",
@@ -269,6 +267,28 @@ async function getStoreContext() {
   return storeContextPromise;
 }
 
+async function getRegionId() {
+  const storeContext = await getStoreContext();
+  const regionId = storeContext.region?.id;
+
+  if (!regionId) {
+    throw new Error("Missing store region");
+  }
+
+  return regionId;
+}
+
+async function getSalesChannelId() {
+  const storeContext = await getStoreContext();
+  const salesChannelId = storeContext.store?.default_sales_channel_id;
+
+  if (!salesChannelId) {
+    throw new Error("Missing default sales channel");
+  }
+
+  return salesChannelId;
+}
+
 export function formatPrice(amount: number, currencyCode = "eur") {
   return new Intl.NumberFormat("sk-SK", {
     style: "currency",
@@ -306,16 +326,20 @@ export function getProductInfo(handle: string): ProductInfo {
 }
 
 export async function listProducts() {
+  const regionId = await getRegionId();
+  const salesChannelId = await getSalesChannelId();
   const data = await medusaFetch<{ products: StoreProduct[] }>(
-    `/store/products?limit=20&region_id=${MEDUSA_REGION_ID}`
+    `/store/products?limit=20&region_id=${regionId}&sales_channel_id=${salesChannelId}&fields=*variants.calculated_price,+variants.inventory_quantity`
   );
 
   return data.products;
 }
 
 export async function getProductByHandle(handle: string) {
+  const regionId = await getRegionId();
+  const salesChannelId = await getSalesChannelId();
   const data = await medusaFetch<{ products: StoreProduct[] }>(
-    `/store/products?handle[0]=${encodeURIComponent(handle)}&region_id=${MEDUSA_REGION_ID}`
+    `/store/products?handle[0]=${encodeURIComponent(handle)}&region_id=${regionId}&sales_channel_id=${salesChannelId}&fields=*variants.calculated_price,+variants.inventory_quantity`
   );
 
   return data.products[0] ?? null;
@@ -324,15 +348,20 @@ export async function getProductByHandle(handle: string) {
 export async function createCart() {
   const storeContext = await getStoreContext();
   const salesChannelId = storeContext.store?.default_sales_channel_id;
+  const regionId = storeContext.region?.id;
 
   if (!salesChannelId) {
     throw new Error("Missing default sales channel for cart creation");
   }
 
+  if (!regionId) {
+    throw new Error("Missing store region for cart creation");
+  }
+
   const data = await medusaFetch<{ cart: StoreCart }>("/store/carts", {
     method: "POST",
     body: JSON.stringify({
-      region_id: MEDUSA_REGION_ID,
+      region_id: regionId,
       sales_channel_id: salesChannelId,
     }),
   });
@@ -424,8 +453,9 @@ export async function addShippingMethod(cartId: string, optionId: string) {
 }
 
 export async function listPaymentProviders() {
+  const regionId = await getRegionId();
   const data = await medusaFetch<{ payment_providers: StorePaymentProvider[] }>(
-    `/store/payment-providers?region_id=${MEDUSA_REGION_ID}`
+    `/store/payment-providers?region_id=${regionId}`
   );
 
   return data.payment_providers;
