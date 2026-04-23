@@ -37,10 +37,12 @@ services:
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/limi?sslmode=disable
       - REDIS_URL=redis://redis:6379
       - STORE_CORS=http://localhost:3000
-      - ADMIN_CORS=http://localhost:9000,http://localhost:7001
-      - AUTH_CORS=http://localhost:3000,http://localhost:9000
+      - ADMIN_CORS=http://localhost:9001,http://127.0.0.1:9001,http://localhost:7001
+      - AUTH_CORS=http://localhost:3000,http://localhost:9001,http://127.0.0.1:9001
       - JWT_SECRET=supersecret
       - COOKIE_SECRET=supersecret
+      - NODE_ENV=production
+      - COOKIE_SECURE=false
       - SMTP_HOST=smtp.gmail.com
       - SMTP_PORT=587
       - SMTP_SECURE=false
@@ -52,6 +54,7 @@ services:
       - BANK_TRANSFER_IBAN=SK31 1200 0000 1987 4263 7541
       - BANK_TRANSFER_SWIFT=GIBASKBX
       - BANK_TRANSFER_REFERENCE_PREFIX=LIMI
+      - MEDUSA_ADMIN_HTTPS=false
     depends_on:
       postgres:
         condition: service_healthy
@@ -70,14 +73,14 @@ services:
       retries: 12
       start_period: 10s
     ports:
-      - "9000:9000"
+      - "9001:9000"
 
   storefront:
     build:
       context: .
       dockerfile: apps/storefront/Dockerfile
       args:
-        - NEXT_PUBLIC_MEDUSA_BACKEND_URL=http://localhost:9000
+        - NEXT_PUBLIC_MEDUSA_BACKEND_URL=http://localhost:9001
     container_name: limi-storefront
     restart: unless-stopped
     environment:

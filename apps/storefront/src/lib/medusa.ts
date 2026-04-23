@@ -128,6 +128,9 @@ export type StoreProduct = {
   variants: Array<{
     id: string;
     title: string;
+    inventory_quantity?: number;
+    manage_inventory?: boolean;
+    allow_backorder?: boolean;
     calculated_price?: {
       calculated_amount: number;
       currency_code: string;

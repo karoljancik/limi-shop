@@ -24,6 +24,15 @@ export default async function ProductDetailPage({
   const variant = product.variants[0];
   const productInfo = getProductInfo(product.handle);
 
+  const isOutOfStock =
+    variant?.manage_inventory && (variant?.inventory_quantity ?? 0) <= 0 && !variant?.allow_backorder;
+
+  const stockLabel = isOutOfStock
+    ? "Nie je na sklade"
+    : variant?.manage_inventory
+    ? `Skladom (${variant.inventory_quantity} ks)`
+    : "Skladom";
+
   return (
     <div className="page-shell py-10 md:py-14">
       <Link href="/shop" className="text-sm font-medium text-[var(--muted)]">
@@ -59,7 +68,13 @@ export default async function ProductDetailPage({
           <div className="product-info-card">
             <div className="product-info-card__row">
               <span className="product-info-card__label">Dostupnosť</span>
-              <span className="product-info-card__value">{productInfo.stockLabel}</span>
+              <span
+                className={`product-info-card__value ${
+                  isOutOfStock ? "font-bold text-red-500" : "text-green-600"
+                }`}
+              >
+                {stockLabel}
+              </span>
             </div>
             <div className="product-info-card__row">
               <span className="product-info-card__label">Katalógové číslo</span>
@@ -76,7 +91,9 @@ export default async function ProductDetailPage({
           </p>
 
           <div className="product-detail__actions">
-            {variant ? <AddToCartButton variantId={variant.id} /> : null}
+            {variant ? (
+              <AddToCartButton variantId={variant.id} outOfStock={isOutOfStock} />
+            ) : null}
             <a href="#info" className="btn-soft">
               Viac o nálepke
             </a>

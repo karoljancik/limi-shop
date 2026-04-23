@@ -15,7 +15,7 @@ COPY apps/backend/ ./
 
 ENV NODE_ENV=production
 ENV MEDUSA_ADMIN_ONBOARDING_TYPE=none
-ENV DISABLE_MEDUSA_ADMIN=true
+ENV DISABLE_MEDUSA_ADMIN=false
 ENV MEDUSA_BACKEND_URL=http://localhost:9000
 ENV DATABASE_URL=postgres://postgres:postgres@localhost:5432/medusa?sslmode=disable
 ENV REDIS_URL=redis://localhost:6379

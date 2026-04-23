@@ -22,16 +22,23 @@ export default async function ShopPage() {
             className="card flex h-full flex-col overflow-hidden"
             data-testid="product-card"
           >
-            <Link href={`/shop/${product.handle}`}>
+            <Link href={`/shop/${product.handle}`} className="relative block">
               <Image
                 src={getProductImageSrc(product) ?? "https://placehold.co/1200x1600/eee/111?text=LIMI"}
                 alt={product.title}
                 width={1200}
                 height={1600}
-                loading={index === 0 ? "eager" : undefined}
+                priority={index === 0}
                 unoptimized
                 className="h-80 w-full object-cover"
               />
+              {product.variants[0]?.manage_inventory &&
+                (product.variants[0]?.inventory_quantity ?? 0) <= 0 &&
+                !product.variants[0]?.allow_backorder && (
+                  <div className="absolute left-4 top-4 rounded-full bg-red-600 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white shadow-xl ring-2 ring-white/20 backdrop-blur-sm">
+                    Vypredané
+                  </div>
+                )}
             </Link>
             <div className="flex flex-1 flex-col gap-3 p-5">
               <Link href={`/shop/${product.handle}`}>
