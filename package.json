@@ -1,0 +1,13 @@
+{
+  "name": "limi",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:storefront": "npm run dev --workspace storefront",
+    "dev:backend": "npm run dev --workspace backend",
+    "build": "npm run build --workspaces --if-present"
+  }
+}

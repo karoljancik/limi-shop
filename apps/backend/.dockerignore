@@ -1,0 +1,11 @@
+node_modules
+.medusa
+.yarn
+.vscode
+dist
+backend-dev.log
+backend-start.log
+.env
+.env.test
+.github
+README.md

@@ -1,0 +1,20 @@
+node_modules
+.pnpm-store
+.next
+.turbo
+dist
+build
+.env
+.env.local
+.env.*.local
+coverage
+*.log
+
+# local services
+docker-data
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea
+.vscode
