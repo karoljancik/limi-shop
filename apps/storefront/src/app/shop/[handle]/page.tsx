@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AddToCartButton } from "@/components/add-to-cart-button";
-import { formatPrice, getProductByHandle } from "@/lib/medusa";
+import { formatPrice, getProductByHandle, getProductImageSrc } from "@/lib/medusa";
 
 export default async function ProductDetailPage({
   params,
@@ -27,10 +27,12 @@ export default async function ProductDetailPage({
       <div className="mt-6 grid gap-8 md:grid-cols-[0.95fr_1.05fr]">
         <div className="card overflow-hidden p-4">
           <Image
-            src={product.thumbnail ?? "https://placehold.co/1200x1600/eee/111?text=LIMI"}
+            src={getProductImageSrc(product) ?? "https://placehold.co/1200x1600/eee/111?text=LIMI"}
             alt={product.title}
             width={1200}
             height={1600}
+            loading="eager"
+            unoptimized
             className="h-[520px] w-full rounded-[1.25rem] object-cover"
           />
         </div>

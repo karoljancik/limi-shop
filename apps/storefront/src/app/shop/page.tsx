@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { formatPrice, listProducts } from "@/lib/medusa";
+import { formatPrice, getProductImageSrc, listProducts } from "@/lib/medusa";
 
 export default async function ShopPage() {
   const products = await listProducts();
@@ -16,7 +16,7 @@ export default async function ShopPage() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {products.map((product) => (
+        {products.map((product, index) => (
           <Link
             key={product.id}
             href={`/shop/${product.handle}`}
@@ -24,10 +24,12 @@ export default async function ShopPage() {
             data-testid="product-card"
           >
             <Image
-              src={product.thumbnail ?? "https://placehold.co/1200x1600/eee/111?text=LIMI"}
+              src={getProductImageSrc(product) ?? "https://placehold.co/1200x1600/eee/111?text=LIMI"}
               alt={product.title}
               width={1200}
               height={1600}
+              loading={index === 0 ? "eager" : undefined}
+              unoptimized
               className="h-80 w-full object-cover"
             />
             <div className="space-y-3 p-5">

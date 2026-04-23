@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { formatPrice, listProducts } from "@/lib/medusa";
+import { formatPrice, getProductImageSrc, listProducts } from "@/lib/medusa";
 
 export default async function Home() {
   const products = await listProducts();
@@ -11,7 +11,7 @@ export default async function Home() {
       <section className="page-shell">
         <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-center">
           <div className="space-y-6">
-            <p className="eyebrow">Limi stickersss</p>
+            <p className="eyebrow">Limi nálepky</p>
             <h1 className="max-w-3xl text-5xl font-black leading-none tracking-tight md:text-7xl">
               3D zážitkové nálepky pre pokojné tvorenie.
             </h1>
@@ -63,10 +63,11 @@ export default async function Home() {
               data-testid="featured-product"
             >
               <Image
-                src={product.thumbnail ?? "https://placehold.co/1200x1600/eee/111?text=LIMI"}
+                src={getProductImageSrc(product) ?? "https://placehold.co/1200x1600/eee/111?text=LIMI"}
                 alt={product.title}
                 width={1200}
                 height={1600}
+                unoptimized
                 className="h-72 w-full object-cover"
               />
               <div className="space-y-3 p-5">

@@ -375,7 +375,7 @@ export default async function seedLimiData({ container }: ExecArgs) {
           weight: 150,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [{ url: "https://placehold.co/1200x1600/c4e7f7/1f2937?text=Kapi+Kupelne+Nalepky" }],
+          images: [{ url: "/products/stickers/kapi_limi.jpg" }],
           options: [{ title: "Edition", values: ["Default"] }],
           variants: [
             {
@@ -398,7 +398,7 @@ export default async function seedLimiData({ container }: ExecArgs) {
           weight: 150,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [{ url: "https://placehold.co/1200x1600/f7ecb5/1f2937?text=Mackova+Pekaren" }],
+          images: [{ url: "/products/stickers/macko_limi.jpg" }],
           options: [{ title: "Edition", values: ["Default"] }],
           variants: [
             {
@@ -421,7 +421,7 @@ export default async function seedLimiData({ container }: ExecArgs) {
           weight: 150,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [{ url: "https://placehold.co/1200x1600/f8d1df/1f2937?text=Piggy+Obchod" }],
+          images: [{ url: "/products/stickers/piggy_limi.jpg" }],
           options: [{ title: "Edition", values: ["Default"] }],
           variants: [
             {
@@ -444,7 +444,7 @@ export default async function seedLimiData({ container }: ExecArgs) {
           weight: 150,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [{ url: "https://placehold.co/1200x1600/cd7c68/ffffff?text=Vianocne+Nalepky" }],
+          images: [{ url: "/products/stickers/vianoce_limi.jpg" }],
           options: [{ title: "Edition", values: ["Default"] }],
           variants: [
             {
@@ -467,7 +467,7 @@ export default async function seedLimiData({ container }: ExecArgs) {
           weight: 120,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [{ url: "https://placehold.co/1200x1600/8c5a62/ffffff?text=Mystery+Nalepky" }],
+          images: [{ url: "/products/stickers/mystery_limi.jpg" }],
           options: [{ title: "Edition", values: ["Default"] }],
           variants: [
             {
@@ -490,7 +490,7 @@ export default async function seedLimiData({ container }: ExecArgs) {
           weight: 50,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [{ url: "https://placehold.co/1200x1600/e8e8e8/1f2937?text=Pinzeta+LIMI" }],
+          images: [{ url: "/products/stickers/pinzety_limi.jpg" }],
           options: [{ title: "Edition", values: ["Default"] }],
           variants: [
             {

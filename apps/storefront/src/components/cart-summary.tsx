@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { loadCurrentCart } from "@/lib/cart-client";
-import { formatPrice, type StoreCart } from "@/lib/medusa";
+import { formatPrice, getCartItemImageSrc, type StoreCart } from "@/lib/medusa";
 
 export function CartSummary() {
   const [cart, setCart] = useState<StoreCart | null>(null);
@@ -50,12 +50,13 @@ export function CartSummary() {
           className="card flex items-center gap-4 p-4"
           data-testid="cart-item"
         >
-          {item.thumbnail ? (
+          {getCartItemImageSrc(item) ? (
             <Image
-              src={item.thumbnail}
+              src={getCartItemImageSrc(item)!}
               alt={item.product_title}
               width={84}
               height={84}
+              unoptimized
               className="h-20 w-20 rounded-2xl object-cover"
             />
           ) : null}

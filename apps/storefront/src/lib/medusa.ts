@@ -17,8 +17,16 @@ if (!publishableKey) {
 
 export const MEDUSA_BACKEND_URL = publicBackendUrl;
 export const MEDUSA_PUBLISHABLE_KEY = publishableKey;
-export const MEDUSA_REGION_ID = "reg_01KPTPPA2PM6ZEYJYHE5W8FYN0";
-export const MEDUSA_SALES_CHANNEL_ID = "sc_01KPTPP9VMXHMEHYKAJJT6SXYS";
+export const MEDUSA_REGION_ID = "reg_01KPX1Y7RENYM45TNR5H3KQ5XY";
+
+const PRODUCT_IMAGE_BY_HANDLE: Record<string, string> = {
+  "kapi-kupelne-nalepky-limi": "/products/stickers/kapi_limi.jpg",
+  "mackova-pekaren-nalepky-limi": "/products/stickers/macko_limi.jpg",
+  "piggy-obchod-nalepky-limi": "/products/stickers/piggy_limi.jpg",
+  "vianocne-nalepky-limi": "/products/stickers/vianoce_limi.jpg",
+  "mystery-nalepky-limi": "/products/stickers/mystery_limi.jpg",
+  "pinzeta-limi": "/products/stickers/pinzety_limi.jpg",
+};
 
 function getMedusaBaseUrl() {
   return typeof window === "undefined" ? internalBackendUrl : publicBackendUrl;
@@ -82,6 +90,16 @@ export function formatPrice(amount: number, currencyCode = "eur") {
   }).format(amount / 100);
 }
 
+export function getProductImageSrc(product: Pick<StoreProduct, "handle" | "thumbnail">) {
+  return PRODUCT_IMAGE_BY_HANDLE[product.handle] ?? product.thumbnail ?? null;
+}
+
+export function getCartItemImageSrc(
+  item: Pick<StoreCart["items"][number], "product_handle" | "thumbnail">
+) {
+  return PRODUCT_IMAGE_BY_HANDLE[item.product_handle] ?? item.thumbnail ?? null;
+}
+
 export async function listProducts() {
   const data = await medusaFetch<{ products: StoreProduct[] }>(
     `/store/products?limit=20&region_id=${MEDUSA_REGION_ID}`
@@ -103,7 +121,6 @@ export async function createCart() {
     method: "POST",
     body: JSON.stringify({
       region_id: MEDUSA_REGION_ID,
-      sales_channel_id: MEDUSA_SALES_CHANNEL_ID,
     }),
   });
 
