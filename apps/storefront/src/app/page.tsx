@@ -11,7 +11,7 @@ export default async function Home() {
       <section className="page-shell">
         <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-center">
           <div className="space-y-6">
-            <p className="eyebrow">Limi stickers</p>
+            <p className="eyebrow">Limi stickersss</p>
             <h1 className="max-w-3xl text-5xl font-black leading-none tracking-tight md:text-7xl">
               3D zazitkove nalepky pre pokojne tvorenie.
             </h1>
@@ -29,12 +29,16 @@ export default async function Home() {
             </div>
           </div>
           <div className="card overflow-hidden p-4">
-            <Image
-              src={featured[0]?.thumbnail ?? "https://placehold.co/1200x1600/f7ecb5/1f2937?text=LIMI"}
-              alt={featured[0]?.title ?? "Limi"}
-              width={1200}
-              height={1600}
+            <video
               className="h-[420px] w-full rounded-[1.25rem] object-cover"
+              src="/video/brand/Videoweb-web.mp4"
+              poster="/video/brand/frame0.jpg"
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls={false}
+              preload="auto"
             />
           </div>
         </div>
