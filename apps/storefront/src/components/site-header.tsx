@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useCart } from "@/components/cart-provider";
 
 const navItems = [
   { href: "/", label: "Domov" },
@@ -13,6 +14,7 @@ const navItems = [
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const { itemCount } = useCart();
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -96,6 +98,9 @@ export function SiteHeader() {
                 className={`site-header__nav-link${isActive ? " is-active" : ""}`}
               >
                 {item.label}
+                {item.href === "/kosik" && itemCount > 0 && (
+                  <span className="site-header__cart-badge">{itemCount}</span>
+                )}
               </Link>
             );
           })}

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useTransition } from "react";
+import { useCart } from "@/components/cart-provider";
 import {
   clearCart,
   loadCurrentCart,
@@ -80,6 +81,7 @@ function validateForm(form: CheckoutFormState) {
 }
 
 export function CartSummary() {
+  const { refreshCart } = useCart();
   const [cart, setCart] = useState<StoreCart | null>(null);
   const [loading, setLoading] = useState(true);
   const [feedback, setFeedback] = useState<string | null>(null);
@@ -153,6 +155,7 @@ export function CartSummary() {
       try {
         const nextCart = await action();
         syncDrafts(nextCart);
+        await refreshCart();
         setFeedback(successMessage ?? null);
       } catch {
         setFeedback("Nieco sa nepodarilo upravit v kosiku. Skus to este raz.");
@@ -610,6 +613,7 @@ export function CartSummary() {
 
                     resetStoredCart();
                     syncDrafts(null);
+                    await refreshCart();
                     setNotification(nextNotification);
                     setOrder(createdOrder);
                   } catch (error) {

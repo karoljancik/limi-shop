@@ -2,8 +2,10 @@
 
 import { useState, useTransition } from "react";
 import { addVariantToCart } from "@/lib/cart-client";
+import { useCart } from "@/components/cart-provider";
 
 export function AddToCartButton({ variantId }: { variantId: string }) {
+  const { refreshCart } = useCart();
   const [message, setMessage] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [isPending, startTransition] = useTransition();
@@ -66,6 +68,7 @@ export function AddToCartButton({ variantId }: { variantId: string }) {
           startTransition(async () => {
             try {
               await addVariantToCart(variantId, normalizedQuantity);
+              await refreshCart();
               setMessage(
                 normalizedQuantity === 1
                   ? "Produkt bol pridany do kosika."
