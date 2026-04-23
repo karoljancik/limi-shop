@@ -41,6 +41,17 @@ services:
       - AUTH_CORS=http://localhost:3000,http://localhost:9000
       - JWT_SECRET=supersecret
       - COOKIE_SECRET=supersecret
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_PORT=587
+      - SMTP_SECURE=false
+      - SMTP_USER=karoljancik@gmail.com
+      - SMTP_PASS=ruyu kxce iyav taao
+      - SMTP_FROM=karoljancik@gmail.com
+      - BANK_TRANSFER_ACCOUNT_NAME=Limi s.r.o.
+      - BANK_TRANSFER_BANK_NAME=Slovenska sporitelna
+      - BANK_TRANSFER_IBAN=SK31 1200 0000 1987 4263 7541
+      - BANK_TRANSFER_SWIFT=GIBASKBX
+      - BANK_TRANSFER_REFERENCE_PREFIX=LIMI
     depends_on:
       postgres:
         condition: service_healthy
