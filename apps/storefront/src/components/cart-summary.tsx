@@ -74,7 +74,7 @@ function validateForm(form: CheckoutFormState) {
     !form.city.trim() ||
     !form.postal_code.trim()
   ) {
-    return "Vypln prosim kontaktne udaje aj adresu pre dorucenie.";
+    return "Vyplň prosím kontaktné údaje aj adresu pre doručenie.";
   }
 
   return null;
@@ -141,7 +141,7 @@ export function CartSummary() {
     hydrateCheckout().catch(() => {
       if (mounted) {
         setLoading(false);
-        setCheckoutError("Nepodarilo sa nacitat checkout. Skus obnovit stranku.");
+        setCheckoutError("Nepodarilo sa načítať checkout. Skús obnoviť stránku.");
       }
     });
 
@@ -158,7 +158,7 @@ export function CartSummary() {
         await refreshCart();
         setFeedback(successMessage ?? null);
       } catch {
-        setFeedback("Nieco sa nepodarilo upravit v kosiku. Skus to este raz.");
+        setFeedback("Niečo sa nepodarilo upraviť v košíku. Skús to ešte raz.");
       } finally {
         setActiveItemId(null);
       }
@@ -170,27 +170,27 @@ export function CartSummary() {
   }
 
   if (loading) {
-    return <p className="text-sm text-[var(--muted)]">Nacitavam kosik a checkout...</p>;
+    return <p className="text-sm text-[var(--muted)]">Načítavam košík a checkout...</p>;
   }
 
   if (order && notification) {
     return (
       <div className="space-y-6">
         <div className="card space-y-4 p-6">
-          <p className="eyebrow">Objednavka prijata</p>
-          <h2 className="text-3xl font-black">Dakujeme, objednavka je vytvorena.</h2>
+          <p className="eyebrow">Objednávka prijatá</p>
+          <h2 className="text-3xl font-black">Ďakujeme, objednávka je vytvorená.</h2>
           <p className="text-[var(--muted)]">
-            Cislo objednavky <strong>#{order.display_id}</strong>. Platbu zatial uhrad bankovym
-            prevodom, a po prijati platby budeme objednavku spracovavat.
+            Číslo objednávky <strong>#{order.display_id}</strong>. Platbu zatiaľ uhraď bankovým
+            prevodom, a po prijatí platby budeme objednávku spracovávať.
           </p>
           <div className="grid gap-4 md:grid-cols-2">
             <div className="card p-5">
               <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-                Platobne udaje
+                Platobné údaje
               </p>
               <div className="mt-4 space-y-3 text-sm">
                 <p>
-                  <strong>Prijemca:</strong> {notification.bank_transfer.account_name}
+                  <strong>Príjemca:</strong> {notification.bank_transfer.account_name}
                 </p>
                 <p>
                   <strong>Banka:</strong> {notification.bank_transfer.bank_name}
@@ -202,7 +202,7 @@ export function CartSummary() {
                   <strong>SWIFT:</strong> {notification.bank_transfer.swift}
                 </p>
                 <p>
-                  <strong>Variabilny symbol:</strong>{" "}
+                  <strong>Variabilný symbol:</strong>{" "}
                   {notification.bank_transfer.payment_reference}
                 </p>
                 <p>
@@ -212,15 +212,15 @@ export function CartSummary() {
             </div>
             <div className="card p-5">
               <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-                E-mail a dalsi krok
+                E-mail a ďalší krok
               </p>
               <div className="mt-4 space-y-3 text-sm text-[var(--muted)]">
                 <p>{notification.message}</p>
                 <p>
-                  Objednavka je vedena na e-mail <strong>{order.email}</strong>.
+                  Objednávka je vedená na e-mail <strong>{order.email}</strong>.
                 </p>
                 <p>
-                  Po prijati platby mozeme objednavku oznacit ako zaplatenu a pripravit na
+                  Po prijatí platby môžeme objednávku označiť ako zaplatenú a pripraviť na
                   odoslanie.
                 </p>
               </div>
@@ -228,10 +228,10 @@ export function CartSummary() {
           </div>
           <div className="flex flex-wrap gap-3">
             <Link href="/shop" className="btn-primary">
-              Pokracovat v nakupovani
+              Pokračovať v nakupovaní
             </Link>
             <Link href="/" className="btn-secondary">
-              Spat na domov
+              Späť na domov
             </Link>
           </div>
         </div>
@@ -242,9 +242,9 @@ export function CartSummary() {
   if (!cart || cart.items.length === 0) {
     return (
       <div className="card space-y-4 p-6" data-testid="empty-cart">
-        <p className="text-sm text-[var(--muted)]">Kosik je zatial prazdny.</p>
+        <p className="text-sm text-[var(--muted)]">Košík je zatiaľ prázdny.</p>
         <Link href="/shop" className="btn-primary w-fit">
-          Vybrat nalepky
+          Vybrať nálepky
         </Link>
       </div>
     );
@@ -254,18 +254,18 @@ export function CartSummary() {
     <div className="space-y-6" data-testid="cart-summary">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="text-sm text-[var(--muted)]">
-          V kosiku mas {cart.items.length} {cart.items.length === 1 ? "polozku" : "polozky"}.
+          V košíku máš {cart.items.length} {cart.items.length === 1 ? "položku" : "položky"}.
         </p>
         <button
           type="button"
           className="btn-secondary"
           onClick={() => {
             setFeedback(null);
-            runCartAction(() => clearCart(), "Kosik bol vyprazdneny.");
+            runCartAction(() => clearCart(), "Košík bol vyprázdnený.");
           }}
           disabled={isPending}
         >
-          Vymazat obsah kosika
+          Vymazať obsah košíka
         </button>
       </div>
 
@@ -306,7 +306,7 @@ export function CartSummary() {
                     <button
                       type="button"
                       className="h-10 w-10 text-lg font-semibold transition hover:bg-[rgba(241,196,206,0.24)] disabled:opacity-50"
-                      aria-label={`Znizit mnozstvo pre ${item.product_title}`}
+                      aria-label={`Znížiť množstvo pre ${item.product_title}`}
                       onClick={() => {
                         const nextQuantity = Math.max(1, draftQuantity - 1);
                         setActiveItemId(item.id);
@@ -314,7 +314,7 @@ export function CartSummary() {
                         setDraftQuantities((current) => ({ ...current, [item.id]: nextQuantity }));
                         runCartAction(
                           () => updateCartItemQuantity(item.id, nextQuantity),
-                          "Mnozstvo v kosiku bolo upravene."
+                          "Množstvo v košíku bolo upravené."
                         );
                       }}
                       disabled={isItemPending}
@@ -349,7 +349,7 @@ export function CartSummary() {
                         setFeedback(null);
                         runCartAction(
                           () => updateCartItemQuantity(item.id, nextQuantity),
-                          "Mnozstvo v kosiku bolo upravene."
+                          "Množstvo v košíku bolo upravené."
                         );
                       }}
                     />
@@ -357,7 +357,7 @@ export function CartSummary() {
                     <button
                       type="button"
                       className="h-10 w-10 text-lg font-semibold transition hover:bg-[rgba(241,196,206,0.24)] disabled:opacity-50"
-                      aria-label={`Zvysit mnozstvo pre ${item.product_title}`}
+                      aria-label={`Zvýšiť množstvo pre ${item.product_title}`}
                       onClick={() => {
                         const nextQuantity = Math.min(99, draftQuantity + 1);
                         setActiveItemId(item.id);
@@ -365,7 +365,7 @@ export function CartSummary() {
                         setDraftQuantities((current) => ({ ...current, [item.id]: nextQuantity }));
                         runCartAction(
                           () => updateCartItemQuantity(item.id, nextQuantity),
-                          "Mnozstvo v kosiku bolo upravene."
+                          "Množstvo v košíku bolo upravené."
                         );
                       }}
                       disabled={isItemPending}
@@ -384,12 +384,12 @@ export function CartSummary() {
                         setFeedback(null);
                         runCartAction(
                           () => removeCartItem(item.id),
-                          "Polozka bola odstranena z kosika."
+                          "Položka bola odstránená z košíka."
                         );
                       }}
                       disabled={isItemPending}
                     >
-                      Odstranit
+                      Odstrániť
                     </button>
                   </div>
                 </div>
@@ -399,8 +399,8 @@ export function CartSummary() {
 
           <div className="card space-y-5 p-6">
             <div>
-              <p className="eyebrow">Kontakt a dorucenie</p>
-              <h3 className="mt-2 text-2xl font-black">Dokoncit objednavku</h3>
+              <p className="eyebrow">Kontakt a doručenie</p>
+              <h3 className="mt-2 text-2xl font-black">Dokončiť objednávku</h3>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2">
@@ -414,7 +414,7 @@ export function CartSummary() {
                 />
               </label>
               <label className="space-y-2 text-sm font-medium">
-                <span>Telefon</span>
+                <span>Telefón</span>
                 <input
                   className="w-full rounded-2xl border border-[var(--line)] bg-white/90 px-4 py-3 outline-none"
                   type="tel"
@@ -439,7 +439,7 @@ export function CartSummary() {
                 />
               </label>
               <label className="space-y-2 text-sm font-medium md:col-span-2">
-                <span>Ulica a cislo</span>
+                <span>Ulica a číslo</span>
                 <input
                   className="w-full rounded-2xl border border-[var(--line)] bg-white/90 px-4 py-3 outline-none"
                   value={form.address_1}
@@ -455,7 +455,7 @@ export function CartSummary() {
                 />
               </label>
               <label className="space-y-2 text-sm font-medium">
-                <span>PSC</span>
+                <span>PSČ</span>
                 <input
                   className="w-full rounded-2xl border border-[var(--line)] bg-white/90 px-4 py-3 outline-none"
                   value={form.postal_code}
@@ -470,7 +470,7 @@ export function CartSummary() {
                   onChange={(event) => updateFormField("country_code", event.target.value)}
                 >
                   <option value="sk">Slovensko</option>
-                  <option value="cz">Cesko</option>
+                  <option value="cz">Česko</option>
                 </select>
               </label>
             </div>
@@ -495,7 +495,7 @@ export function CartSummary() {
                     <span className="flex-1">
                       <span className="block font-semibold">{option.name}</span>
                       <span className="mt-1 block text-sm text-[var(--muted)]">
-                        {option.type?.description ?? "Standardne dorucenie na adresu."}
+                        {option.type?.description ?? "Štandardné doručenie na adresu."}
                       </span>
                     </span>
                     <span className="font-semibold">
@@ -522,10 +522,10 @@ export function CartSummary() {
                       onChange={() => setSelectedPaymentProviderId(provider.id)}
                     />
                     <span>
-                      <span className="block font-semibold">Bankovy prevod</span>
+                      <span className="block font-semibold">Bankový prevod</span>
                       <span className="mt-1 block text-sm text-[var(--muted)]">
-                        Objednavku odosles bez online platby. Platobne udaje dostanes po
-                        potvrdeni objednavky.
+                        Objednávku odošleš bez online platby. Platobné údaje dostaneš po
+                        potvrdení objednávky.
                       </span>
                     </span>
                   </label>
@@ -553,12 +553,12 @@ export function CartSummary() {
                     }
 
                     if (!selectedShippingOptionId) {
-                      setCheckoutError("Vyber sposob dorucenia.");
+                      setCheckoutError("Vyber spôsob doručenia.");
                       return;
                     }
 
                     if (!selectedPaymentProviderId) {
-                      setCheckoutError("Vyber sposob platby.");
+                      setCheckoutError("Vyber spôsob platby.");
                       return;
                     }
 
@@ -600,14 +600,14 @@ export function CartSummary() {
                       nextNotification = {
                         bank_transfer: {
                           account_name: "Limi",
-                          bank_name: "Dopln banku v env",
-                          iban: "Dopln IBAN v env",
-                          swift: "Dopln SWIFT v env",
+                          bank_name: "Doplň banku v env",
+                          iban: "Doplň IBAN v env",
+                          swift: "Doplň SWIFT v env",
                           payment_reference: String(createdOrder.display_id),
                         },
                         email_sent: false,
                         message:
-                          "Objednavka je vytvorena, ale e-mail s platobnymi udajmi sa nepodarilo odoslat.",
+                          "Objednávka je vytvorená, ale e-mail s platobnými údajmi sa nepodarilo odoslať.",
                       };
                     }
 
@@ -620,14 +620,14 @@ export function CartSummary() {
                     const message =
                       error instanceof Error
                         ? error.message
-                        : "Objednavku sa nepodarilo dokoncit. Skus to este raz.";
+                        : "Objednávku sa nepodarilo dokončiť. Skús to ešte raz.";
                     setCheckoutError(message);
                   }
                 });
               }}
               disabled={isPending}
             >
-              {isPending ? "Dokoncujem objednavku..." : "Objednat s bankovym prevodom"}
+              {isPending ? "Dokončujem objednávku..." : "Objednať s bankovým prevodom"}
             </button>
           </div>
         </div>
@@ -635,10 +635,10 @@ export function CartSummary() {
         <div className="space-y-4">
           <div className="card space-y-4 p-5">
             <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-              Rekapitulacia
+              Rekapitulácia
             </p>
             <div className="flex items-center justify-between text-sm text-[var(--muted)]">
-              <span>Medzisucet</span>
+              <span>Medzisúčet</span>
               <span>{formatPrice(cart.subtotal, cart.currency_code)}</span>
             </div>
             <div className="flex items-center justify-between text-sm text-[var(--muted)]">
@@ -654,7 +654,7 @@ export function CartSummary() {
               </span>
             </div>
             <div className="flex items-center justify-between border-t border-[var(--line)] pt-4 text-lg font-bold">
-              <span>Predpokladana suma spolu</span>
+              <span>Predpokladaná suma spolu</span>
               <span>
                 {formatPrice(
                   cart.subtotal +
@@ -668,13 +668,13 @@ export function CartSummary() {
 
           <div className="card space-y-4 p-5">
             <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-              Ako to bude fungovat
+              Ako to bude fungovať
             </p>
             <ol className="space-y-3 text-sm text-[var(--muted)]">
-              <li>1. Vyplnis kontaktne udaje a adresu.</li>
-              <li>2. Potvrdis objednavku cez bankovy prevod.</li>
-              <li>3. Zobrazime ti platobne udaje a pokusime sa ich poslat aj mailom.</li>
-              <li>4. Po prijati platby objednavku spracujeme.</li>
+              <li>1. Vyplníš kontaktné údaje a adresu.</li>
+              <li>2. Potvrdíš objednávku cez bankový prevod.</li>
+              <li>3. Zobrazíme ti platobné údaje a pokúsime sa ich poslať aj mailom.</li>
+              <li>4. Po prijatí platby objednávku spracujeme.</li>
             </ol>
           </div>
         </div>

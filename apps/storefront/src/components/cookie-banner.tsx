@@ -32,19 +32,19 @@ export function CookieBanner() {
         <div className="cookie-banner__content">
           <div className="cookie-banner__icon">🍪</div>
           <div className="cookie-banner__text-group">
-            <h4 className="cookie-banner__title">Pouzivame cookies</h4>
+            <h4 className="cookie-banner__title">Používame cookies</h4>
             <p className="cookie-banner__description">
-              Tento web pouziva cookies na zlepsenie uzivatelskeho zazitku a analyzu navstevnosti. 
-              Pouzivanim webu suhlasis s ich ukladanim.
+              Tento web používa cookies na zlepšenie užívateľského zážitku a analýzu návštevnosti. 
+              Používaním webu súhlasíš s ich ukladaním.
             </p>
           </div>
         </div>
         <div className="cookie-banner__actions">
           <button onClick={handleDecline} className="cookie-banner__btn cookie-banner__btn--secondary">
-            Odmietnut
+            Odmietnuť
           </button>
           <button onClick={handleAccept} className="cookie-banner__btn cookie-banner__btn--primary">
-            Suhlasim
+            Súhlasím
           </button>
         </div>
       </div>
