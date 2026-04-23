@@ -12,6 +12,11 @@ coverage
 
 # local services
 docker-data
+.localconfig
+limiShop.zip
+limiShop_extracted/
+apps/backend/public/admin/
+apps/storefront/test-results/
 
 # OS/editor
 .DS_Store
