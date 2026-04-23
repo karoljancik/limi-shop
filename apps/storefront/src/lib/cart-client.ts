@@ -9,22 +9,69 @@ import {
   updateLineItem,
 } from "./medusa";
 
-const CART_STORAGE_KEY = "limi-cart-id";
+const CART_COOKIE_KEY = "limi-cart-id";
+
+function getCookie(name: string): string | null {
+  if (typeof document === "undefined") {
+    return null;
+  }
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === " ") c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+function setCookie(name: string, value: string, days = 30) {
+  if (typeof document === "undefined") {
+    return;
+  }
+  let expires = "";
+  if (days) {
+    const date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
+}
+
+function deleteCookie(name: string) {
+  if (typeof document === "undefined") {
+    return;
+  }
+  document.cookie = name + "=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+}
 
 export function getStoredCartId() {
   if (typeof window === "undefined") {
     return null;
   }
 
-  return window.localStorage.getItem(CART_STORAGE_KEY);
+  // Migration from localStorage if cookie doesn't exist
+  const fromCookie = getCookie(CART_COOKIE_KEY);
+  if (fromCookie) {
+    return fromCookie;
+  }
+
+  const fromLocal = window.localStorage.getItem("limi-cart-id");
+  if (fromLocal) {
+    setCookie(CART_COOKIE_KEY, fromLocal);
+    window.localStorage.removeItem("limi-cart-id");
+    return fromLocal;
+  }
+
+  return null;
 }
 
 function setStoredCartId(cartId: string) {
-  window.localStorage.setItem(CART_STORAGE_KEY, cartId);
+  setCookie(CART_COOKIE_KEY, cartId);
 }
 
 function clearStoredCartId() {
-  window.localStorage.removeItem(CART_STORAGE_KEY);
+  deleteCookie(CART_COOKIE_KEY);
 }
 
 export function resetStoredCart() {
