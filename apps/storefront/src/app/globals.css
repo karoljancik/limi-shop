@@ -297,6 +297,7 @@ button {
 .product-story {
   display: grid;
   gap: 1.25rem;
+  scroll-margin-top: clamp(7rem, 12vw, 9.5rem);
 }
 
 .product-story__tabs {
@@ -385,6 +386,7 @@ button {
   display: grid;
   gap: 1.5rem;
   padding: 1.65rem;
+  scroll-margin-top: clamp(7rem, 12vw, 9.5rem);
 }
 
 .product-gallery__intro {

@@ -341,7 +341,7 @@ export default async function seedLimiData({ container }: ExecArgs) {
     fields: ["id", "name", "handle"],
   });
 
-  const requiredCategoryNames = ["Nalepky", "Mystery", "Doplnky"];
+  const requiredCategoryNames = ["Nálepky", "Mystery", "Doplnky"];
   const missingCategories = requiredCategoryNames.filter(
     (name) => !existingCategories?.some((category) => category.name === name)
   );
@@ -363,7 +363,7 @@ export default async function seedLimiData({ container }: ExecArgs) {
     categoryResult = [...categoryResult, ...createdCategories];
   }
 
-  const stickerCategory = categoryResult.find((cat) => cat.name === "Nalepky")!;
+  const stickerCategory = categoryResult.find((cat) => cat.name === "Nálepky")!;
   const mysteryCategory = categoryResult.find((cat) => cat.name === "Mystery")!;
   const accessoryCategory = categoryResult.find((cat) => cat.name === "Doplnky")!;
 
@@ -372,10 +372,10 @@ export default async function seedLimiData({ container }: ExecArgs) {
     input: {
       products: [
         {
-          title: "Kapi Kupelne Nalepky LIMI",
+          title: "Kapi Kúpeľné Nálepky LIMI",
           category_ids: [stickerCategory.id],
           description:
-            "3D zazitkove nalepky s kupelnym motivom pre deti a dospelych. Kreativny oddych bez obrazoviek.",
+            "3D zážitkové nálepky s kúpeľným motívom pre deti a dospelých. Kreatívny oddych bez obrazoviek.",
           handle: "kapi-kupelne-nalepky-limi",
           weight: 150,
           status: ProductStatus.PUBLISHED,
@@ -395,10 +395,10 @@ export default async function seedLimiData({ container }: ExecArgs) {
           sales_channels: [{ id: defaultSalesChannel.id }],
         },
         {
-          title: "Mackova Pekaren Nalepky LIMI",
+          title: "Mackova Pekáreň Nálepky LIMI",
           category_ids: [stickerCategory.id],
           description:
-            "Hravna 3D nalepkova sada s pekarnou, idealna ako kreativny darcek pre deti.",
+            "Hravá 3D nálepková sada s pekárňou, ideálna ako kreatívny darček pre deti.",
           handle: "mackova-pekaren-nalepky-limi",
           weight: 150,
           status: ProductStatus.PUBLISHED,
@@ -418,10 +418,10 @@ export default async function seedLimiData({ container }: ExecArgs) {
           sales_channels: [{ id: defaultSalesChannel.id }],
         },
         {
-          title: "Piggy Obchod Nalepky LIMI",
+          title: "Piggy Obchod Nálepky LIMI",
           category_ids: [stickerCategory.id],
           description:
-            "Ruzova 3D zazitkova sada s obchodikom pre pokojne tvorenie a jemnu motoriku.",
+            "Ružová 3D zážitková sada s obchodíkom pre pokojné tvorenie a jemnú motoriku.",
           handle: "piggy-obchod-nalepky-limi",
           weight: 150,
           status: ProductStatus.PUBLISHED,
@@ -441,10 +441,10 @@ export default async function seedLimiData({ container }: ExecArgs) {
           sales_channels: [{ id: defaultSalesChannel.id }],
         },
         {
-          title: "Vianocne Nalepky LIMI",
+          title: "Vianočné Nálepky LIMI",
           category_ids: [stickerCategory.id],
           description:
-            "Sviatocna edicia 3D nalepiek, ktora prinasa tvorivy oddych a vanocnu atmosferu.",
+            "Sviatočná edícia 3D nálepiek, ktorá prináša tvorivý oddych a vianočnú atmosféru.",
           handle: "vianocne-nalepky-limi",
           weight: 150,
           status: ProductStatus.PUBLISHED,
@@ -464,10 +464,10 @@ export default async function seedLimiData({ container }: ExecArgs) {
           sales_channels: [{ id: defaultSalesChannel.id }],
         },
         {
-          title: "Mystery Nalepky LIMI",
+          title: "Mystery Nálepky LIMI",
           category_ids: [mysteryCategory.id],
           description:
-            "Prekvapenie v obalke. Mystery sada prida objavovanie a zabavu ku kazdej objednavke.",
+            "Prekvapenie v obálke. Mystery sada pridá objavovanie a zábavu ku každej objednávke.",
           handle: "mystery-nalepky-limi",
           weight: 120,
           status: ProductStatus.PUBLISHED,
@@ -490,7 +490,7 @@ export default async function seedLimiData({ container }: ExecArgs) {
           title: "Pinzeta LIMI",
           category_ids: [accessoryCategory.id],
           description:
-            "Pomocna pinzeta na presne lepenie drobnych detailov pri tvoreni LIMI nalepiek.",
+            "Pomocná pinzeta na presné lepenie drobných detailov pri tvorení LIMI nálepiek.",
           handle: "pinzeta-limi",
           weight: 50,
           status: ProductStatus.PUBLISHED,

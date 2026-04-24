@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AddToCartButton } from "@/components/add-to-cart-button";
 import { ProductZoomImage } from "@/components/product-zoom-image";
@@ -41,7 +41,7 @@ export default async function ProductDetailPage({
   return (
     <div className="page-shell py-10 md:py-14">
       <Link href="/shop" className="text-sm font-medium text-[var(--muted)]">
-        ← Spat do obchodu
+        ← Späť do obchodu
       </Link>
 
       <div className="mt-6 grid items-start gap-8 md:grid-cols-[0.95fr_1.05fr]">
@@ -71,7 +71,7 @@ export default async function ProductDetailPage({
 
           <div className="product-info-card">
             <div className="product-info-card__row">
-              <span className="product-info-card__label">Dostupnost</span>
+              <span className="product-info-card__label">Dostupnosť</span>
               <span
                 className={`product-info-card__value ${
                   isOutOfStock ? "font-bold text-red-500" : "text-green-600"
@@ -81,11 +81,11 @@ export default async function ProductDetailPage({
               </span>
             </div>
             <div className="product-info-card__row">
-              <span className="product-info-card__label">Katalogove cislo</span>
+              <span className="product-info-card__label">Katalógové číslo</span>
               <span className="product-info-card__value">{productInfo.catalogNumber}</span>
             </div>
             <div className="product-info-card__row">
-              <span className="product-info-card__label">Kategoria</span>
+              <span className="product-info-card__label">Kategória</span>
               <span className="product-info-card__value">{productInfo.category}</span>
             </div>
           </div>
@@ -97,7 +97,7 @@ export default async function ProductDetailPage({
               <AddToCartButton variantId={variant.id} outOfStock={isOutOfStock} />
             ) : null}
             <a href="#info" className="btn-soft">
-              Viac o nalepke
+              Viac o nálepke
             </a>
           </div>
         </div>
@@ -105,10 +105,13 @@ export default async function ProductDetailPage({
 
       <section id="info" className="product-story mt-10 md:mt-14">
         <div className="product-story__tabs">
-          <span className="product-story__tab is-active">Popis</span>
-          <span className="product-story__tab">Co v nej najdes</span>
+          <a href="#info" className="product-story__tab is-active">
+            Popis
+          </a>
           {collectionImages.length > 0 ? (
-            <span className="product-story__tab">Galeria kolekcie</span>
+            <a href="#gallery" className="product-story__tab">
+              Galéria kolekcie
+            </a>
           ) : null}
         </div>
 
@@ -116,26 +119,17 @@ export default async function ProductDetailPage({
           <div className="card product-story__copy">
             <p className="product-story__lead">{productInfo.description}</p>
             <p className="text-base leading-8 text-[var(--muted)]">
-              {product.description} LIMI nalepky su navrhnute tak, aby deti bavili, rozvijali ich
-              fantaziu a prinasali pokojne spolocne chvile pri tvoreni.
+              {product.description} LIMI nálepky sú navrhnuté tak, aby deti bavili, rozvíjali ich
+              fantáziu a prinášali pokojné spoločné chvíle pri tvorení.
             </p>
           </div>
 
           <div className="card product-story__facts">
             <div>
-              <p className="eyebrow">Preco si ich oblubit</p>
+              <p className="eyebrow">Prečo si ich obľúbiť</p>
               <ul className="product-story__list">
                 {productInfo.highlights.map((highlight) => (
                   <li key={highlight}>{highlight}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <p className="eyebrow">V baleni najdes</p>
-              <ul className="product-story__list">
-                {productInfo.includes.map((item) => (
-                  <li key={item}>{item}</li>
                 ))}
               </ul>
             </div>
@@ -143,15 +137,15 @@ export default async function ProductDetailPage({
         </div>
 
         {collectionImages.length > 0 ? (
-          <div className="card product-gallery">
+          <div id="gallery" className="card product-gallery">
             <div className="product-gallery__intro">
               <div>
-                <p className="eyebrow">Galeria kolekcie</p>
-                <h2 className="product-gallery__title">Ako vyzera sada po rozlozeni</h2>
+                <p className="eyebrow">Galéria kolekcie</p>
+                <h2 className="product-gallery__title">Ako vyzerá sada po rozložení</h2>
               </div>
               <p className="product-gallery__text">
-                Hlavna fotka produktu ostava bez zmeny a tu nizsie najdes este detailnejsi pohlad
-                na motiv a rozlozenie dielikov v sade.
+                Hlavná fotka produktu ostáva bez zmeny a tu nižšie nájdeš ešte detailnejší pohľad
+                na motív a rozloženie dielikov v sade.
               </p>
             </div>
 
@@ -178,3 +172,4 @@ export default async function ProductDetailPage({
     </div>
   );
 }
+

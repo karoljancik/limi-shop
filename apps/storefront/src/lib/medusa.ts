@@ -1,4 +1,4 @@
-const publicBackendUrl = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL;
+﻿const publicBackendUrl = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL;
 const internalBackendUrl =
   process.env.MEDUSA_BACKEND_URL ?? publicBackendUrl;
 const publishableKey = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY;
@@ -118,27 +118,27 @@ const PRODUCT_COLLECTION_IMAGES_BY_HANDLE = {
     {
       src: "/products/collections/limi_capy_wellness/capy_wellness.png",
       alt: "LIMI Kapi wellness kolekcia",
-      caption: "Plny motiv kolekcie",
+      caption: "Plný motív kolekcie",
       featured: false,
     },
     {
       src: "/products/collections/limi_capy_wellness/capy_wellness_overview.jpeg",
-      alt: "LIMI Kapi wellness prehlad dielikov",
-      caption: "Prehlad sceny a dielikov",
+      alt: "LIMI Kapi wellness prehľad dielikov",
+      caption: "Prehľad scény a dielikov",
       featured: true,
     },
   ],
   "mackova-pekaren-nalepky-limi": [
     {
       src: "/products/collections/limi_bear_bakery/bear_bakery.png",
-      alt: "LIMI Mackova pekaren kolekcia",
-      caption: "Plny motiv kolekcie",
+      alt: "LIMI Mačkova pekáreň kolekcia",
+      caption: "Plný motív kolekcie",
       featured: false,
     },
     {
       src: "/products/collections/limi_bear_bakery/bear_bakery_overview.jpeg",
-      alt: "LIMI Mackova pekaren prehlad dielikov",
-      caption: "Prehlad sceny a dielikov",
+      alt: "LIMI Mačkova pekáreň prehľad dielikov",
+      caption: "Prehľad scény a dielikov",
       featured: true,
     },
   ],
@@ -146,13 +146,13 @@ const PRODUCT_COLLECTION_IMAGES_BY_HANDLE = {
     {
       src: "/products/collections/limi_piggy_store/piggy_store.png",
       alt: "LIMI Piggy obchod kolekcia",
-      caption: "Plny motiv kolekcie",
+      caption: "Plný motív kolekcie",
       featured: false,
     },
     {
       src: "/products/collections/limi_piggy_store/piggy_store_overview.jpeg",
-      alt: "LIMI Piggy obchod prehlad dielikov",
-      caption: "Prehlad sceny a dielikov",
+      alt: "LIMI Piggy obchod prehľad dielikov",
+      caption: "Prehľad scény a dielikov",
       featured: true,
     },
   ],
@@ -573,3 +573,5 @@ export async function sendCheckoutNotification(input: {
     body: JSON.stringify(input),
   });
 }
+
+

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="80" x2="1060" y2="1440" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD0E1"/>
+      <stop offset="0.52" stop-color="#FFE7A0"/>
+      <stop offset="1" stop-color="#BEE8FF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1600" rx="72" fill="url(#bg)"/>
+  <rect x="110" y="110" width="980" height="1380" rx="54" fill="#FFF9FC" fill-opacity="0.82"/>
+  <circle cx="930" cy="280" r="120" fill="#FFFFFF" fill-opacity="0.44"/>
+  <circle cx="260" cy="370" r="150" fill="#FFFFFF" fill-opacity="0.28"/>
+  <path d="M355 975C355 825.865 475.865 705 625 705C774.135 705 895 825.865 895 975V1035C895 1057.09 877.091 1075 855 1075H395C372.909 1075 355 1057.09 355 1035V975Z" fill="#FFFFFF" fill-opacity="0.76"/>
+  <rect x="470" y="520" width="310" height="70" rx="35" fill="#CF5D98" fill-opacity="0.14"/>
+  <text x="600" y="566" text-anchor="middle" fill="#C04F8F" font-family="Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="4">LIMI ATELIER</text>
+  <text x="600" y="890" text-anchor="middle" fill="#4A3B4F" font-family="Arial, sans-serif" font-size="110" font-weight="800">PRODUCT</text>
+  <text x="600" y="1010" text-anchor="middle" fill="#4A3B4F" font-family="Arial, sans-serif" font-size="110" font-weight="800">IMAGE</text>
+  <text x="600" y="1165" text-anchor="middle" fill="#7A6E7F" font-family="Arial, sans-serif" font-size="42" font-weight="600">Sem doplnis realny produktovy vizual</text>
+</svg>

@@ -1,0 +1,16 @@
+/*
+Theme Name: Limi Atelier
+Theme URI: https://example.com/limi-atelier
+Author: Codex
+Author URI: https://openai.com
+Description: Custom WordPress theme scaffold inspired by the current LIMI storefront design.
+Version: 0.1.0
+Requires at least: 6.5
+Tested up to: 6.8
+Requires PHP: 8.1
+Text Domain: limi-atelier
+*/
+
+/*
+  The main visual styles are loaded from assets/css/theme.css.
+*/
