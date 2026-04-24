@@ -51,6 +51,10 @@ $is_en = get_locale() === 'en_US';
                         </span>
                     </div>
                     <div class="product-info-card__row">
+                        <span class="product-info-card__label"><?php echo $is_en ? 'Catalog ID' : 'Katalógové číslo'; ?></span>
+                        <span class="product-info-card__value"><?php echo $product ? $product->get_sku() ?: '---' : '---'; ?></span>
+                    </div>
+                    <div class="product-info-card__row">
                         <span class="product-info-card__label"><?php echo $is_en ? 'Category' : 'Kategória'; ?></span>
                         <span class="product-info-card__value"><?php echo wc_get_product_category_list(get_the_ID()); ?></span>
                     </div>
