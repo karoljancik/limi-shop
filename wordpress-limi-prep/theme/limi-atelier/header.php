@@ -22,6 +22,12 @@ $contact_url = limi_atelier_get_page_url_by_title('Kontakt', '/kontakt/');
 ?>
 
 <header class="site-header">
+    <!-- Design Decorations -->
+    <div class="site-header__glow"></div>
+    <div class="site-header__cloud site-header__cloud--left"></div>
+    <div class="site-header__bubble site-header__bubble--peach"></div>
+    <div class="site-header__sparkle site-header__sparkle--left"></div>
+
     <div class="site-header__inner">
         <a class="site-header__brand" href="<?php echo esc_url($home_url); ?>">
             <?php echo limi_atelier_get_logo_markup(); ?>
