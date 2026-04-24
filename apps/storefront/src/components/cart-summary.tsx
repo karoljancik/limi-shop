@@ -474,7 +474,7 @@ export function CartSummary({ locale = "sk" }: { locale?: string }) {
             );
           })}
 
-          <div className="card space-y-5 p-6">
+          <form className="card space-y-5 p-6" onSubmit={(e) => e.preventDefault()}>
             <div>
               <p className="eyebrow">{t.contactTitle}</p>
               <h3 className="mt-2 text-2xl font-black">{t.checkoutTitle}</h3>
@@ -486,6 +486,8 @@ export function CartSummary({ locale = "sk" }: { locale?: string }) {
                 <input
                   className="w-full rounded-2xl border border-[var(--line)] bg-white/90 px-4 py-3 outline-none"
                   type="email"
+                  name="email"
+                  autoComplete="email"
                   value={form.email}
                   onChange={(event) => updateFormField("email", event.target.value)}
                 />
@@ -495,6 +497,8 @@ export function CartSummary({ locale = "sk" }: { locale?: string }) {
                 <input
                   className="w-full rounded-2xl border border-[var(--line)] bg-white/90 px-4 py-3 outline-none"
                   type="tel"
+                  name="phone"
+                  autoComplete="tel"
                   value={form.phone}
                   onChange={(event) => updateFormField("phone", event.target.value)}
                 />
@@ -503,6 +507,8 @@ export function CartSummary({ locale = "sk" }: { locale?: string }) {
                 <span>{t.firstName}</span>
                 <input
                   className="w-full rounded-2xl border border-[var(--line)] bg-white/90 px-4 py-3 outline-none"
+                  name="first_name"
+                  autoComplete="given-name"
                   value={form.first_name}
                   onChange={(event) => updateFormField("first_name", event.target.value)}
                 />
@@ -511,6 +517,8 @@ export function CartSummary({ locale = "sk" }: { locale?: string }) {
                 <span>{t.lastName}</span>
                 <input
                   className="w-full rounded-2xl border border-[var(--line)] bg-white/90 px-4 py-3 outline-none"
+                  name="last_name"
+                  autoComplete="family-name"
                   value={form.last_name}
                   onChange={(event) => updateFormField("last_name", event.target.value)}
                 />
@@ -519,6 +527,8 @@ export function CartSummary({ locale = "sk" }: { locale?: string }) {
                 <span>{t.address}</span>
                 <input
                   className="w-full rounded-2xl border border-[var(--line)] bg-white/90 px-4 py-3 outline-none"
+                  name="address"
+                  autoComplete="address-line1"
                   value={form.address_1}
                   onChange={(event) => updateFormField("address_1", event.target.value)}
                 />
@@ -527,6 +537,8 @@ export function CartSummary({ locale = "sk" }: { locale?: string }) {
                 <span>{t.city}</span>
                 <input
                   className="w-full rounded-2xl border border-[var(--line)] bg-white/90 px-4 py-3 outline-none"
+                  name="city"
+                  autoComplete="address-level2"
                   value={form.city}
                   onChange={(event) => updateFormField("city", event.target.value)}
                 />
@@ -535,6 +547,8 @@ export function CartSummary({ locale = "sk" }: { locale?: string }) {
                 <span>{t.postalCode}</span>
                 <input
                   className="w-full rounded-2xl border border-[var(--line)] bg-white/90 px-4 py-3 outline-none"
+                  name="postal_code"
+                  autoComplete="postal-code"
                   value={form.postal_code}
                   onChange={(event) => updateFormField("postal_code", event.target.value)}
                 />
@@ -543,6 +557,8 @@ export function CartSummary({ locale = "sk" }: { locale?: string }) {
                 <span>{t.country}</span>
                 <select
                   className="w-full rounded-2xl border border-[var(--line)] bg-white/90 px-4 py-3 outline-none"
+                  name="country"
+                  autoComplete="country"
                   value={form.country_code}
                   onChange={(event) => updateFormField("country_code", event.target.value)}
                 >
@@ -706,7 +722,7 @@ export function CartSummary({ locale = "sk" }: { locale?: string }) {
             >
               {isPending ? t.placingOrder : t.placeOrder}
             </button>
-          </div>
+          </form>
         </div>
 
         <div className="space-y-4">
