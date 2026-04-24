@@ -18,7 +18,8 @@ if (! defined('ABSPATH')) {
 <?php
 $home_url = limi_atelier_get_page_url_by_title('Domov', '/');
 $shop_url = limi_atelier_get_page_url_by_title('Shop', '/shop/');
-$contact_url = limi_atelier_get_page_url_by_title('Kontakt', '/kontakt/');
+$cart_url = function_exists('wc_get_cart_url') ? wc_get_cart_url() : '/cart/';
+$is_en = get_locale() === 'en_US';
 ?>
 
 <header class="site-header">
@@ -41,10 +42,15 @@ $contact_url = limi_atelier_get_page_url_by_title('Kontakt', '/kontakt/');
              </div>
 
             <nav class="site-header__nav" aria-label="<?php esc_attr_e('Main navigation', 'limi-atelier'); ?>">
-                <a class="site-header__nav-link" href="<?php echo esc_url($home_url); ?>"><?php echo get_locale() === 'en_US' ? 'Home' : 'Domov'; ?></a>
-                <a class="site-header__nav-link" href="<?php echo esc_url($shop_url); ?>"><?php echo get_locale() === 'en_US' ? 'Shop' : 'Obchod'; ?></a>
-                <a class="site-header__nav-link" href="<?php echo esc_url($contact_url); ?>"><?php echo get_locale() === 'en_US' ? 'Contact' : 'Kontakt'; ?></a>
-                <a class="site-header__cta" href="<?php echo esc_url($shop_url); ?>"><?php echo get_locale() === 'en_US' ? 'Discover stickers' : 'Objaviť nálepky'; ?></a>
+                <a class="site-header__nav-link" href="<?php echo esc_url($home_url); ?>"><?php echo $is_en ? 'Home' : 'Domov'; ?></a>
+                <a class="site-header__nav-link" href="<?php echo esc_url($shop_url); ?>"><?php echo $is_en ? 'Shop' : 'Obchod'; ?></a>
+                <a class="site-header__nav-link" href="<?php echo esc_url($cart_url); ?>">
+                    <?php echo $is_en ? 'Cart' : 'Košík'; ?>
+                    <?php if (function_exists('WC') && WC()->cart) : ?>
+                        <span class="site-header__cart-badge"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+                    <?php endif; ?>
+                </a>
+                <a class="site-header__cta" href="<?php echo esc_url($shop_url); ?>"><?php echo $is_en ? 'Discover stickers' : 'Objaviť nálepky'; ?></a>
             </nav>
         </div>
     </div>

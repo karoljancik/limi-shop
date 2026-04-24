@@ -382,6 +382,23 @@ img {
   color: var(--foreground);
 }
 
+.site-header__cart-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.15rem;
+  height: 1.15rem;
+  padding: 0 0.25rem;
+  margin-left: 0.35rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #cf5d98, #ff8bb1);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 4px 10px rgba(207, 93, 152, 0.24);
+}
+
 .site-header__cta {
   background: linear-gradient(135deg, #171717, #413b36);
   color: #fff !important;
