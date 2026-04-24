@@ -55,7 +55,7 @@ export default async function Home() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {featured.map((product) => (
+          {featured.map((product, index) => (
             <div
               key={product.id}
               className="card flex h-full flex-col overflow-hidden"
@@ -67,6 +67,8 @@ export default async function Home() {
                   alt={product.title}
                   width={1200}
                   height={1600}
+                  priority={index === 0}
+                  loading={index === 0 ? "eager" : "lazy"}
                   unoptimized
                   className="h-72 w-full object-cover"
                 />

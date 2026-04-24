@@ -64,8 +64,8 @@ Lokalne storefront obrazky drz v:
 
 Priklad:
 
-- subor `apps/storefront/public/products/stickers/kapi_limi.jpg`
-- URL na webe `/products/stickers/kapi_limi.jpg`
+- subor `apps/storefront/public/products/stickers/limi_capy_wellness.jpg`
+- URL na webe `/products/stickers/limi_capy_wellness.jpg`
 
 Aktualne storefront vie zobrazit lokalne obrazky produktov podla `handle`, takze zmeny obrazkov vidis hned vo fronte aj bez reseedu databazy.
 
@@ -83,3 +83,28 @@ Poznamka:
 - Produkty su zdrojovo v `Medusa`.
 - Obsahove stranky mozeme mat v prvej verzii priamo v `Next.js`.
 - Vlastne rozsirenia backendu budeme pridavat az ked na ne vznikne realna potreba.
+
+## Production priprava
+
+Bez zasahu do aktualneho lokalneho development flow je pripravena aj produkcna kostra:
+
+- `docker-compose.production.yml`
+- `.env.production.example`
+- `deploy/Caddyfile.example`
+- `deploy/deploy.ps1`
+- `deploy/migrate.ps1`
+- `deploy/seed.ps1`
+- `deploy/backup-postgres.ps1`
+
+Postup:
+
+1. skopiruj `.env.production.example` na `.env.production`
+2. dopln realne secret-y a URL
+3. skopiruj `deploy/Caddyfile.example` na `deploy/Caddyfile`
+4. spusti `./deploy/deploy.ps1`
+
+Poznamka:
+
+- produkcny setup nechava `backend`, `storefront`, `postgres` a `redis` v oddelenych kontajneroch
+- `Postgres` ani `Redis` sa v produkcnom compose nevystavuju verejne
+- seed sa v backende uz nespusta automaticky, iba ak nastavis `RUN_SEED_ON_BOOT=true`

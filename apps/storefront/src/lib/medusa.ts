@@ -18,11 +18,11 @@ if (!publishableKey) {
 export const MEDUSA_BACKEND_URL = publicBackendUrl;
 export const MEDUSA_PUBLISHABLE_KEY = publishableKey;
 const PRODUCT_IMAGE_BY_HANDLE: Record<string, string> = {
-  "kapi-kupelne-nalepky-limi": "/products/stickers/kapi_limi.jpg",
-  "mackova-pekaren-nalepky-limi": "/products/stickers/macko_limi.jpg",
-  "piggy-obchod-nalepky-limi": "/products/stickers/piggy_limi.jpg",
-  "vianocne-nalepky-limi": "/products/stickers/vianoce_limi.jpg",
-  "mystery-nalepky-limi": "/products/stickers/mystery_limi.jpg",
+  "kapi-kupelne-nalepky-limi": "/products/stickers/limi_capy_wellness.jpg",
+  "mackova-pekaren-nalepky-limi": "/products/stickers/limi_bear_bakery.jpg",
+  "piggy-obchod-nalepky-limi": "/products/stickers/limi_piggy_store.jpg",
+  "vianocne-nalepky-limi": "/products/stickers/limi_christmas_stick.jpg",
+  "mystery-nalepky-limi": "/products/stickers/limi_mystery_stick.jpg",
   "pinzeta-limi": "/products/stickers/pinzety_limi.jpg",
 };
 
@@ -113,6 +113,51 @@ const PRODUCT_INFO_BY_HANDLE = {
   },
 } as const;
 
+const PRODUCT_COLLECTION_IMAGES_BY_HANDLE = {
+  "kapi-kupelne-nalepky-limi": [
+    {
+      src: "/products/collections/limi_capy_wellness/capy_wellness.png",
+      alt: "LIMI Kapi wellness kolekcia",
+      caption: "Plny motiv kolekcie",
+      featured: false,
+    },
+    {
+      src: "/products/collections/limi_capy_wellness/capy_wellness_overview.jpeg",
+      alt: "LIMI Kapi wellness prehlad dielikov",
+      caption: "Prehlad sceny a dielikov",
+      featured: true,
+    },
+  ],
+  "mackova-pekaren-nalepky-limi": [
+    {
+      src: "/products/collections/limi_bear_bakery/bear_bakery.png",
+      alt: "LIMI Mackova pekaren kolekcia",
+      caption: "Plny motiv kolekcie",
+      featured: false,
+    },
+    {
+      src: "/products/collections/limi_bear_bakery/bear_bakery_overview.jpeg",
+      alt: "LIMI Mackova pekaren prehlad dielikov",
+      caption: "Prehlad sceny a dielikov",
+      featured: true,
+    },
+  ],
+  "piggy-obchod-nalepky-limi": [
+    {
+      src: "/products/collections/limi_piggy_store/piggy_store.png",
+      alt: "LIMI Piggy obchod kolekcia",
+      caption: "Plny motiv kolekcie",
+      featured: false,
+    },
+    {
+      src: "/products/collections/limi_piggy_store/piggy_store_overview.jpeg",
+      alt: "LIMI Piggy obchod prehlad dielikov",
+      caption: "Prehlad sceny a dielikov",
+      featured: true,
+    },
+  ],
+} as const;
+
 function getMedusaBaseUrl() {
   return typeof window === "undefined" ? internalBackendUrl : publicBackendUrl;
 }
@@ -144,6 +189,13 @@ export type ProductInfo = {
   highlights: readonly string[];
   includes: readonly string[];
   stockLabel: string;
+};
+
+export type ProductCollectionImage = {
+  alt: string;
+  caption: string;
+  featured: boolean;
+  src: string;
 };
 
 type StoreContext = {
@@ -322,6 +374,14 @@ export function getProductInfo(handle: string): ProductInfo {
       includes: ["produkt z kolekcie LIMI"],
       stockLabel: "Dostupné online",
     }
+  );
+}
+
+export function getProductCollectionImages(handle: string): readonly ProductCollectionImage[] {
+  return (
+    PRODUCT_COLLECTION_IMAGES_BY_HANDLE[
+      handle as keyof typeof PRODUCT_COLLECTION_IMAGES_BY_HANDLE
+    ] ?? []
   );
 }
 

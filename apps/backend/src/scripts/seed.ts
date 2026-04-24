@@ -380,7 +380,7 @@ export default async function seedLimiData({ container }: ExecArgs) {
           weight: 150,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [{ url: "/products/stickers/kapi_limi.jpg" }],
+          images: [{ url: "/products/stickers/limi_capy_wellness.jpg" }],
           options: [{ title: "Edition", values: ["Default"] }],
           variants: [
             {
@@ -403,7 +403,7 @@ export default async function seedLimiData({ container }: ExecArgs) {
           weight: 150,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [{ url: "/products/stickers/macko_limi.jpg" }],
+          images: [{ url: "/products/stickers/limi_bear_bakery.jpg" }],
           options: [{ title: "Edition", values: ["Default"] }],
           variants: [
             {
@@ -426,7 +426,7 @@ export default async function seedLimiData({ container }: ExecArgs) {
           weight: 150,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [{ url: "/products/stickers/piggy_limi.jpg" }],
+          images: [{ url: "/products/stickers/limi_piggy_store.jpg" }],
           options: [{ title: "Edition", values: ["Default"] }],
           variants: [
             {
@@ -449,7 +449,7 @@ export default async function seedLimiData({ container }: ExecArgs) {
           weight: 150,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [{ url: "/products/stickers/vianoce_limi.jpg" }],
+          images: [{ url: "/products/stickers/limi_christmas_stick.jpg" }],
           options: [{ title: "Edition", values: ["Default"] }],
           variants: [
             {
@@ -472,7 +472,7 @@ export default async function seedLimiData({ container }: ExecArgs) {
           weight: 120,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [{ url: "/products/stickers/mystery_limi.jpg" }],
+          images: [{ url: "/products/stickers/limi_mystery_stick.jpg" }],
           options: [{ title: "Edition", values: ["Default"] }],
           variants: [
             {

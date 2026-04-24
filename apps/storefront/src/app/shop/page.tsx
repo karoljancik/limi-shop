@@ -29,6 +29,7 @@ export default async function ShopPage() {
                 width={1200}
                 height={1600}
                 priority={index === 0}
+                loading={index === 0 ? "eager" : "lazy"}
                 unoptimized
                 className="h-80 w-full object-cover"
               />

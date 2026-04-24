@@ -1,0 +1,18 @@
+{
+  email admin@example.com
+}
+
+{$STORE_DOMAIN} {
+  encode gzip zstd
+  reverse_proxy storefront:3000
+}
+
+{$ADMIN_DOMAIN} {
+  encode gzip zstd
+  reverse_proxy backend:9000
+}
+
+{$API_DOMAIN} {
+  encode gzip zstd
+  reverse_proxy backend:9000
+}
