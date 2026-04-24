@@ -32,7 +32,7 @@ $is_en = get_locale() === 'en_US';
                 
                 <div class="product-detail-actions">
                     <?php woocommerce_template_single_add_to_cart(); ?>
-                    <a href="#info" class="btn-soft"><?php echo $is_en ? 'More about the sticker' : 'Viac o nálepke'; ?></a>
+                    <a href="#product-info" class="btn-soft"><?php echo $is_en ? 'More about the sticker' : 'Viac o nálepke'; ?></a>
                 </div>
 
                 <div class="product-info-card mt-6">
@@ -62,7 +62,7 @@ $is_en = get_locale() === 'en_US';
             </div>
         </div>
 
-        <section id="info" class="product-story page-spacing-small">
+        <section id="product-info" class="product-story page-spacing-small">
             <div class="product-story__tabs">
                 <span class="product-story__tab is-active"><?php echo $is_en ? 'Description' : 'Popis'; ?></span>
                 <span class="product-story__tab"><?php echo $is_en ? 'Details' : 'Detaily'; ?></span>

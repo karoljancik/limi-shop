@@ -30,7 +30,7 @@ $is_en = get_locale() === 'en_US';
                             <p class="product-card__description"><?php echo esc_html(wp_strip_all_tags(get_the_excerpt())); ?></p>
                             <div class="product-card__footer">
                                 <p class="product-card__price"><?php echo $product ? wp_kses_post($product->get_price_html()) : ''; ?></p>
-                                <a class="product-card__info-link" href="<?php the_permalink(); ?>"><?php echo $is_en ? 'View detail' : 'Viac o nálepke'; ?></a>
+                                <a class="product-card__info-link" href="<?php the_permalink(); ?>#product-info"><?php echo $is_en ? 'View detail' : 'Viac o nálepke'; ?></a>
                             </div>
                         </div>
                     </article>

@@ -61,7 +61,7 @@ $is_en = get_locale() === 'en_US';
                         </p>
                         <div class="product-card__footer">
                             <p class="product-card__price"><?php echo esc_html(limi_atelier_get_product_price($product)); ?></p>
-                            <a class="product-card__info-link" href="<?php echo esc_url(limi_atelier_get_product_url($product)); ?>">
+                            <a class="product-card__info-link" href="<?php echo esc_url(limi_atelier_get_product_url($product)); ?>#product-info">
                                 <?php echo $is_en ? 'View detail' : 'Viac o nálepke'; ?>
                             </a>
                         </div>
