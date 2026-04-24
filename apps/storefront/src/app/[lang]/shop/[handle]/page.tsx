@@ -72,25 +72,38 @@ export default async function ProductDetailPage({
             width={1200}
             height={1600}
             priority
-            className="h-[520px] w-full rounded-[1.25rem] object-cover"
+            className="aspect-[4/5] w-full rounded-[1.25rem] object-cover md:h-[540px]"
           />
         </div>
 
-        <div className="space-y-6">
-          <p className="eyebrow">{detailEyebrow}</p>
-          <div className="product-detail__headline">
-            <span className="product-detail__badge">{productInfo.badge}</span>
-            <h1 className="text-4xl font-black leading-tight">{title}</h1>
+        <div className="space-y-5">
+          <div className="space-y-4">
+            <p className="eyebrow">{detailEyebrow}</p>
+            <div className="product-detail__headline">
+              <span className="product-detail__badge">{productInfo.badge}</span>
+              <h1 className="text-3xl font-black leading-tight md:text-4xl">{title}</h1>
+            </div>
+            <p className="text-2xl font-bold">
+              {formatPrice(
+                variant?.calculated_price?.calculated_amount ?? 0,
+                variant?.calculated_price?.currency_code ?? "eur",
+                lang
+              )}
+            </p>
           </div>
-          <p className="text-2xl font-semibold">
-            {formatPrice(
-              variant?.calculated_price?.calculated_amount ?? 0,
-              variant?.calculated_price?.currency_code ?? "eur",
-              lang
-            )}
-          </p>
 
-          <div className="product-info-card">
+          <p className="max-w-2xl text-lg leading-7 text-[var(--muted)]">{description}</p>
+
+          <div className="product-detail__actions">
+            {variant ? (
+              <AddToCartButton variantId={variant.id} outOfStock={isOutOfStock} locale={lang} />
+            ) : null}
+            <a href="#info" className="btn-soft">
+              {aboutText}
+            </a>
+          </div>
+
+          <div className="product-info-card mt-2">
             <div className="product-info-card__row">
               <span className="product-info-card__label">{stockStatusLabel}</span>
               <span
@@ -109,17 +122,6 @@ export default async function ProductDetailPage({
               <span className="product-info-card__label">{categoryLabel}</span>
               <span className="product-info-card__value">{productInfo.category}</span>
             </div>
-          </div>
-
-          <p className="max-w-2xl text-lg leading-8 text-[var(--muted)]">{description}</p>
-
-          <div className="product-detail__actions">
-            {variant ? (
-              <AddToCartButton variantId={variant.id} outOfStock={isOutOfStock} locale={lang} />
-            ) : null}
-            <a href="#info" className="btn-soft">
-              {aboutText}
-            </a>
           </div>
         </div>
       </div>

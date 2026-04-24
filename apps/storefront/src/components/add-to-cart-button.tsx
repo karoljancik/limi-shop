@@ -37,15 +37,12 @@ export function AddToCartButton({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-col gap-2">
-        <label htmlFor="product-quantity" className="text-sm font-semibold">
-          {locale === "en" ? "Quantity" : "Počet kusov"}
-        </label>
-        <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center overflow-hidden rounded-full border border-[var(--line)] bg-white/90 shadow-[0_12px_24px_rgba(194,159,198,0.14)]">
+      <div className="flex flex-col gap-1.5">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center overflow-hidden rounded-full border border-[var(--line)] bg-white/90 shadow-[0_8px_16px_rgba(194,159,198,0.12)]">
             <button
               type="button"
-              className="h-11 w-11 text-xl font-semibold text-[var(--foreground)] transition hover:bg-[rgba(241,196,206,0.24)] disabled:opacity-50"
+              className="h-10 w-10 text-lg font-semibold text-[var(--foreground)] transition hover:bg-[rgba(241,196,206,0.24)] disabled:opacity-50"
               aria-label={locale === "en" ? "Decrease quantity" : "Znížiť počet kusov"}
               onClick={() => {
                 setQuantity((current) => Math.max(1, current - 1));
@@ -60,7 +57,7 @@ export function AddToCartButton({
               min={1}
               max={99}
               inputMode="numeric"
-              className="h-11 w-[4.5rem] border-x border-[var(--line)] bg-transparent px-3 text-center font-semibold outline-none"
+              className="h-10 w-14 border-x border-[var(--line)] bg-transparent px-2 text-center font-semibold outline-none"
               value={normalizedQuantity}
               onChange={(event) => {
                 const nextValue = Number.parseInt(event.target.value, 10);
@@ -70,7 +67,7 @@ export function AddToCartButton({
             />
             <button
               type="button"
-              className="h-11 w-11 text-xl font-semibold text-[var(--foreground)] transition hover:bg-[rgba(241,196,206,0.24)] disabled:opacity-50"
+              className="h-10 w-10 text-lg font-semibold text-[var(--foreground)] transition hover:bg-[rgba(241,196,206,0.24)] disabled:opacity-50"
               aria-label={locale === "en" ? "Increase quantity" : "Zvýšiť počet kusov"}
               onClick={() => {
                 setQuantity((current) => Math.min(99, current + 1));
@@ -80,15 +77,15 @@ export function AddToCartButton({
               +
             </button>
           </div>
-          <p className="text-sm text-[var(--muted)]">
-            {locale === "en" ? "Choose how many pieces you want to add to the cart." : "Vyber si, koľko kusov chceš pridať do košíka."}
-          </p>
+          <span className="text-sm font-semibold text-[var(--muted)]">
+            {locale === "en" ? "pcs" : "ks"}
+          </span>
         </div>
       </div>
 
       <button
         type="button"
-        className="btn-primary"
+        className="btn-primary w-full md:w-fit px-8"
         data-testid="add-to-cart"
         onClick={() => {
           startTransition(async () => {
@@ -115,7 +112,7 @@ export function AddToCartButton({
         }}
         disabled={isPending || disabled}
       >
-        {isPending ? (locale === "en" ? "Adding..." : "Pridávam...") : (locale === "en" ? "Add to cart" : "Pridať do košíka")}
+        {isPending ? (locale === "en" ? "Adding..." : "Pridávam...") : (locale === "en" ? "Add to cart" : "Pridat do košíka")}
       </button>
 
       {message ? <p className="text-sm text-[var(--muted)]">{message}</p> : null}
