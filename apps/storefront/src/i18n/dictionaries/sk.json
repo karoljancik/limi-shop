@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "home": "Domov",
+    "shop": "Obchod",
+    "cart": "Košík",
+    "discover": "Objaviť nálepky"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Limi nálepky",
+      "title": "Nálepky, ktoré pozývajú do sveta malých príbehov.",
+      "description": "Jemné farby, milé motívy a tvorenie, pri ktorom si oddýchnu deti aj rodičia.",
+      "cta_shop": "Objaviť nálepky",
+      "cta_cart": "Pozrieť košík"
+    },
+    "featured": {
+      "eyebrow": "Vybrané produkty",
+      "title": "Malé svety na objavenie",
+      "all_products": "Všetky produkty",
+      "more_info": "Viac o nálepke"
+    }
+  },
+  "cart": {
+    "title": "Váš košík",
+    "empty": "Váš košík je prázdny",
+    "checkout": "Pokračovať k objednávke",
+    "total": "Celkom"
+  },
+  "common": {
+    "currency": "EUR",
+    "languages": {
+      "sk": "Slovenčina",
+      "en": "English"
+    }
+  }
+}

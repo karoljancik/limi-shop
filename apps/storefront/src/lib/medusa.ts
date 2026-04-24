@@ -1,4 +1,4 @@
-﻿const publicBackendUrl = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL;
+const publicBackendUrl = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL;
 const internalBackendUrl =
   process.env.MEDUSA_BACKEND_URL ?? publicBackendUrl;
 const publishableKey = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY;
@@ -28,135 +28,294 @@ const PRODUCT_IMAGE_BY_HANDLE: Record<string, string> = {
 
 const PRODUCT_INFO_BY_HANDLE = {
   "kapi-kupelne-nalepky-limi": {
-    category: "3D nálepky",
-    stockLabel: "Skladom online",
-    badge: "Obľúbené",
-    catalogNumber: "LIMI-BATH-001",
-    description:
-      "Kúpeľný svet plný milých detailov pozýva deti objavovať, lepiť a vytvárať si vlastný malý príbeh.",
-    highlights: [
-      "podporuje jemnú motoriku a trpezlivosť",
-      "pokojné tvorenie bez zhonu a obrazoviek",
-      "jemné farby, ktoré si deti rýchlo obľúbia",
-    ],
-    includes: ["3D nálepkové dieliky", "ilustrované pozadie", "mini príbeh pre detskú fantáziu"],
+    en: {
+      category: "3D Stickers",
+      stockLabel: "In stock online",
+      badge: "Favorite",
+      catalogNumber: "LIMI-BATH-001",
+      description:
+        "A wellness world full of sweet details invites children to discover, stick and create their own little story.",
+      highlights: [
+        "supports fine motor skills and patience",
+        "peaceful creation without rush or screens",
+        "soft colors that children will quickly love",
+      ],
+      includes: ["3D sticker pieces", "illustrated background", "mini story for children's imagination"],
+    },
+    sk: {
+      category: "3D nálepky",
+      stockLabel: "Skladom online",
+      badge: "Obľúbené",
+      catalogNumber: "LIMI-BATH-001",
+      description:
+        "Kúpeľný svet plný milých detailov pozýva deti objavovať, lepiť a vytvárať si vlastný malý príbeh.",
+      highlights: [
+        "podporuje jemnú motoriku a trpezlivosť",
+        "pokojné tvorenie bez zhonu a obrazoviek",
+        "jemné farby, ktoré si deti rýchlo obľúbia",
+      ],
+      includes: ["3D nálepkové dieliky", "ilustrované pozadie", "mini príbeh pre detskú fantáziu"],
+    },
   },
   "mackova-pekaren-nalepky-limi": {
-    category: "3D nálepky",
-    stockLabel: "Skladom online",
-    badge: "Sladká novinka",
-    catalogNumber: "LIMI-FRAME-002",
-    description:
-      "Mačkova pekáreň vonia po koláčikoch, hre a tvorení. Deti si pri nej skladajú vlastný sladký príbeh plný detailov.",
-    highlights: [
-      "sladká téma, ktorú si deti zamilujú na prvý pohľad",
-      "rozvíja pozornosť a jemnú motoriku",
-      "krásny darček na tvorivé popoludnie",
-    ],
-    includes: ["samolepkové vrstvy", "podkladová ilustrácia", "detaily na dotvorenie scény"],
+    en: {
+      category: "3D Stickers",
+      stockLabel: "In stock online",
+      badge: "Sweet novelty",
+      catalogNumber: "LIMI-FRAME-002",
+      description:
+        "Bear's bakery smells like cookies, play and creation. Children build their own sweet story full of details.",
+      highlights: [
+        "sweet theme that children will love at first sight",
+        "develops attention and fine motor skills",
+        "beautiful gift for a creative afternoon",
+      ],
+      includes: ["sticker layers", "base illustration", "details to complete the scene"],
+    },
+    sk: {
+      category: "3D nálepky",
+      stockLabel: "Skladom online",
+      badge: "Sladká novinka",
+      catalogNumber: "LIMI-FRAME-002",
+      description:
+        "Mačkova pekáreň vonia po koláčikoch, hre a tvorení. Deti si pri nej skladajú vlastný sladký príbeh plný detailov.",
+      highlights: [
+        "sladká téma, ktorú si deti zamilujú na prvý pohľad",
+        "rozvíja pozornosť a jemnú motoriku",
+        "krásny darček na tvorivé popoludnie",
+      ],
+      includes: ["samolepkové vrstvy", "podkladová ilustrácia", "detaily na dotvorenie scény"],
+    },
   },
   "piggy-obchod-nalepky-limi": {
-    category: "3D nálepky",
-    stockLabel: "Skladom online",
-    badge: "Hravé",
-    catalogNumber: "LIMI-SHOP-003",
-    description:
-      "Piggy obchod je veselá sada, v ktorej si deti vytvoria vlastný mini obchodík a vymyslia si hru po svojom.",
-    highlights: [
-      "veselá scénka na hru a fantáziu",
-      "zábavné lepenie malých detailov",
-      "farebný dizajn, ktorý rozžiari tvorivý kútik",
-    ],
-    includes: ["3D vrstvy", "hlavná scéna", "ilustrované doplnky"],
+    en: {
+      category: "3D Stickers",
+      stockLabel: "In stock online",
+      badge: "Playful",
+      catalogNumber: "LIMI-SHOP-003",
+      description:
+        "Piggy shop is a cheerful set where children create their own mini shop and invent a game of their own.",
+      highlights: [
+        "cheerful scene for play and imagination",
+        "fun sticking of small details",
+        "colorful design that brightens up a creative corner",
+      ],
+      includes: ["3D layers", "main scene", "illustrated accessories"],
+    },
+    sk: {
+      category: "3D nálepky",
+      stockLabel: "Skladom online",
+      badge: "Hravé",
+      catalogNumber: "LIMI-SHOP-003",
+      description:
+        "Piggy obchod je veselá sada, v ktorej si deti vytvoria vlastný mini obchodík a vymyslia si hru po svojom.",
+      highlights: [
+        "veselá scénka na hru a fantáziu",
+        "zábavné lepenie malých detailov",
+        "farebný dizajn, ktorý rozžiari tvorivý kútik",
+      ],
+      includes: ["3D vrstvy", "hlavná scéna", "ilustrované doplnky"],
+    },
   },
   "vianocne-nalepky-limi": {
-    category: "3D nálepky",
-    stockLabel: "Sezónna kolekcia",
-    badge: "Vianoce",
-    catalogNumber: "LIMI-XMAS-004",
-    description:
-      "Vianočná sada prináša teplú sviatočnú atmosféru, jemné tvorenie a chvíle, pri ktorých sa spomalí celý deň.",
-    highlights: [
-      "ideálne na adventné tvorenie doma",
-      "sviatočná nálada bez zbytočného chaosu",
-      "milý doplnok k zimným tvorivým aktivitám",
-    ],
-    includes: ["tematické 3D nálepky", "zimná scéna", "drobné sviatočné detaily"],
+    en: {
+      category: "3D Stickers",
+      stockLabel: "Seasonal collection",
+      badge: "Christmas",
+      catalogNumber: "LIMI-XMAS-004",
+      description:
+        "The Christmas set brings a warm festive atmosphere, gentle creation and moments that slow down the whole day.",
+      highlights: [
+        "ideal for advent creation at home",
+        "festive mood without unnecessary chaos",
+        "a sweet addition to winter creative activities",
+      ],
+      includes: ["thematic 3D stickers", "winter scene", "small festive details"],
+    },
+    sk: {
+      category: "3D nálepky",
+      stockLabel: "Sezónna kolekcia",
+      badge: "Vianoce",
+      catalogNumber: "LIMI-XMAS-004",
+      description:
+        "Vianočná sada prináša teplú sviatočnú atmosféru, jemné tvorenie a chvíle, pri ktorých sa spomalí celý deň.",
+      highlights: [
+        "ideálne na adventné tvorenie doma",
+        "sviatočná nálada bez zbytočného chaosu",
+        "milý doplnok k zimným tvorivým aktivitám",
+      ],
+      includes: ["tematické 3D nálepky", "zimná scéna", "drobné sviatočné detaily"],
+    },
   },
   "mystery-nalepky-limi": {
-    category: "Mystery nálepky",
-    stockLabel: "Prekvapenie v balení",
-    badge: "Mystery",
-    catalogNumber: "LIMI-MYST-005",
-    description:
-      "Mystery nálepka je malé prekvapenie, ktoré rozžiari oči aj fantáziu. Stačí otvoriť a objaviť, čo sa skrýva vo vnútri.",
-    highlights: [
-      "prekvapenie, ktoré baví deti aj dospelých",
-      "skvelá drobnosť ako darček navyše",
-      "rýchla radosť z tvorenia aj objavovania",
-    ],
-    includes: ["mystery motív", "nálepkové prvky", "mini scéna alebo doplnok"],
+    en: {
+      category: "Mystery Stickers",
+      stockLabel: "Surprise in packaging",
+      badge: "Mystery",
+      catalogNumber: "LIMI-MYST-005",
+      description:
+        "A Mystery sticker is a small surprise that brightens eyes and imagination. Just open and discover what hides inside.",
+      highlights: [
+        "surprise that entertains children and adults",
+        "great little thing as an extra gift",
+        "quick joy from creating and discovering",
+      ],
+      includes: ["mystery motif", "sticker elements", "mini scene or accessory"],
+    },
+    sk: {
+      category: "Mystery nálepky",
+      stockLabel: "Prekvapenie v balení",
+      badge: "Mystery",
+      catalogNumber: "LIMI-MYST-005",
+      description:
+        "Mystery nálepka je malé prekvapenie, ktoré rozžiari oči aj fantáziu. Stačí otvoriť a objaviť, čo sa skrýva vo vnútri.",
+      highlights: [
+        "prekvapenie, ktoré baví deti aj dospelých",
+        "skvelá drobnosť ako darček navyše",
+        "rýchla radosť z tvorenia aj objavovania",
+      ],
+      includes: ["mystery motív", "nálepkové prvky", "mini scéna alebo doplnok"],
+    },
   },
   "pinzeta-limi": {
-    category: "Doplnky",
-    stockLabel: "Pomôcka skladom",
-    badge: "Doplnok",
-    catalogNumber: "LIMI-TOOL-006",
-    description:
-      "Pinzeta LIMI pomáha pri lepení maličkých detailov a robí tvorenie ešte pohodlnejším a presnejším.",
-    highlights: [
-      "uľahčuje prácu s drobnými dielikmi",
-      "vhodná k nálepkám aj detailnému tvoreniu",
-      "praktický pomocník ku každej sade",
-    ],
-    includes: ["pinzeta na jemné uchopenie"],
+    en: {
+      category: "Accessories",
+      stockLabel: "Tool in stock",
+      badge: "Accessory",
+      catalogNumber: "LIMI-TOOL-006",
+      description:
+        "LIMI tweezers help with sticking tiny details and make creation even more comfortable and precise.",
+      highlights: [
+        "facilitates work with tiny pieces",
+        "suitable for stickers and detailed creation",
+        "practical helper for every set",
+      ],
+      includes: ["tweezers for fine grip"],
+    },
+    sk: {
+      category: "Doplnky",
+      stockLabel: "Pomôcka skladom",
+      badge: "Doplnok",
+      catalogNumber: "LIMI-TOOL-006",
+      description:
+        "Pinzeta LIMI pomáha pri lepení maličkých detailov a robí tvorenie ešte pohodlnejším a presnejším.",
+      highlights: [
+        "uľahčuje prácu s drobnými dielikmi",
+        "vhodná k nálepkám aj detailnému tvoreniu",
+        "praktický pomocník ku každej sade",
+      ],
+      includes: ["pinzeta na jemné uchopenie"],
+    },
   },
-} as const;
+};
+
+const PRODUCT_TRANSLATIONS_BY_HANDLE: Record<string, { en: { title: string; description: string }; sk: { title: string; description: string } }> = {
+  "kapi-kupelne-nalepky-limi": {
+    en: {
+      title: "Capy Wellness – 3D Stickers LIMI",
+      description: "A spa world full of sweet details – capybaras relax, bathe and enjoy wellness. Children discover, stick and create their own little story.",
+    },
+    sk: {
+      title: "Kapi kúpeľne – 3D nálepky LIMI",
+      description: "Kúpeľný svet plný milých detailov – kapibary relaxujú, kúpu sa a užívajú si wellness. Deti objavujú, lepia a vytvárajú si vlastný malý príbeh.",
+    },
+  },
+  "mackova-pekaren-nalepky-limi": {
+    en: {
+      title: "Bear's Bakery – 3D Stickers LIMI",
+      description: "Bear's bakery smells like cookies, play and creation. Children build their own sweet story full of details and baked treats.",
+    },
+    sk: {
+      title: "Mačkova pekáreň – 3D nálepky LIMI",
+      description: "Mačkova pekáreň vonia po koláčikoch, hre a tvorení. Deti si pri nej skladajú vlastný sladký príbeh plný detailov.",
+    },
+  },
+  "piggy-obchod-nalepky-limi": {
+    en: {
+      title: "Piggy Shop – 3D Stickers LIMI",
+      description: "Piggy shop is a cheerful set where children create their own mini shop and invent a game of their own.",
+    },
+    sk: {
+      title: "Piggy obchod – 3D nálepky LIMI",
+      description: "Piggy obchod je veselá sada, v ktorej si deti vytvoria vlastný mini obchodík a vymyslia si hru po svojom.",
+    },
+  },
+  "vianocne-nalepky-limi": {
+    en: {
+      title: "Christmas Stickers LIMI",
+      description: "The Christmas set brings a warm festive atmosphere, gentle creation and moments that slow down the whole day.",
+    },
+    sk: {
+      title: "Vianočné nálepky LIMI",
+      description: "Vianočná sada prináša teplú sviatočnú atmosféru, jemné tvorenie a chvíle, pri ktorých sa spomalí celý deň.",
+    },
+  },
+  "mystery-nalepky-limi": {
+    en: {
+      title: "Mystery Stickers LIMI",
+      description: "A Mystery sticker is a small surprise that brightens eyes and imagination. Just open and discover what hides inside.",
+    },
+    sk: {
+      title: "Mystery nálepky LIMI",
+      description: "Mystery nálepka je malé prekvapenie, ktoré rozžiari oči aj fantáziu. Stačí otvoriť a objaviť, čo sa skrýva vo vnútri.",
+    },
+  },
+  "pinzeta-limi": {
+    en: {
+      title: "Tweezers LIMI",
+      description: "LIMI tweezers help with sticking tiny details and make creation even more comfortable and precise.",
+    },
+    sk: {
+      title: "Pinzeta LIMI",
+      description: "Pinzeta LIMI pomáha pri lepení maličkých detailov a robí tvorenie ešte pohodlnejším a presnejším.",
+    },
+  },
+};
 
 const PRODUCT_COLLECTION_IMAGES_BY_HANDLE = {
   "kapi-kupelne-nalepky-limi": [
     {
       src: "/products/collections/limi_capy_wellness/capy_wellness.png",
-      alt: "LIMI Kapi wellness kolekcia",
-      caption: "Plný motív kolekcie",
+      alt: { en: "LIMI Capy wellness collection", sk: "LIMI Kapi wellness kolekcia" },
+      caption: { en: "Full collection motif", sk: "Plný motív kolekcie" },
       featured: false,
     },
     {
       src: "/products/collections/limi_capy_wellness/capy_wellness_overview.jpeg",
-      alt: "LIMI Kapi wellness prehľad dielikov",
-      caption: "Prehľad scény a dielikov",
+      alt: { en: "LIMI Capy wellness pieces overview", sk: "LIMI Kapi wellness prehľad dielikov" },
+      caption: { en: "Scene and pieces overview", sk: "Prehľad scény a dielikov" },
       featured: true,
     },
   ],
   "mackova-pekaren-nalepky-limi": [
     {
       src: "/products/collections/limi_bear_bakery/bear_bakery.png",
-      alt: "LIMI Mačkova pekáreň kolekcia",
-      caption: "Plný motív kolekcie",
+      alt: { en: "LIMI Bear's bakery collection", sk: "LIMI Mačkova pekáreň kolekcia" },
+      caption: { en: "Full collection motif", sk: "Plný motív kolekcie" },
       featured: false,
     },
     {
       src: "/products/collections/limi_bear_bakery/bear_bakery_overview.jpeg",
-      alt: "LIMI Mačkova pekáreň prehľad dielikov",
-      caption: "Prehľad scény a dielikov",
+      alt: { en: "LIMI Bear's bakery pieces overview", sk: "LIMI Mačkova pekáreň prehľad dielikov" },
+      caption: { en: "Scene and pieces overview", sk: "Prehľad scény a dielikov" },
       featured: true,
     },
   ],
   "piggy-obchod-nalepky-limi": [
     {
       src: "/products/collections/limi_piggy_store/piggy_store.png",
-      alt: "LIMI Piggy obchod kolekcia",
-      caption: "Plný motív kolekcie",
+      alt: { en: "LIMI Piggy shop collection", sk: "LIMI Piggy obchod kolekcia" },
+      caption: { en: "Full collection motif", sk: "Plný motív kolekcie" },
       featured: false,
     },
     {
       src: "/products/collections/limi_piggy_store/piggy_store_overview.jpeg",
-      alt: "LIMI Piggy obchod prehľad dielikov",
-      caption: "Prehľad scény a dielikov",
+      alt: { en: "LIMI Piggy shop pieces overview", sk: "LIMI Piggy obchod prehľad dielikov" },
+      caption: { en: "Scene and pieces overview", sk: "Prehľad scény a dielikov" },
       featured: true,
     },
   ],
-} as const;
+};
 
 function getMedusaBaseUrl() {
   return typeof window === "undefined" ? internalBackendUrl : publicBackendUrl;
@@ -341,8 +500,8 @@ async function getSalesChannelId() {
   return salesChannelId;
 }
 
-export function formatPrice(amount: number, currencyCode = "eur") {
-  return new Intl.NumberFormat("sk-SK", {
+export function formatPrice(amount: number, currencyCode = "eur", locale = "sk") {
+  return new Intl.NumberFormat(locale === "en" ? "en-US" : "sk-SK", {
     style: "currency",
     currency: currencyCode.toUpperCase(),
   }).format(amount / 100);
@@ -358,31 +517,53 @@ export function getCartItemImageSrc(
   return PRODUCT_IMAGE_BY_HANDLE[item.product_handle] ?? item.thumbnail ?? null;
 }
 
-export function getProductInfo(handle: string): ProductInfo {
-  return (
-    PRODUCT_INFO_BY_HANDLE[handle as keyof typeof PRODUCT_INFO_BY_HANDLE] ?? {
-      badge: "LIMI",
-      catalogNumber: handle.toUpperCase(),
-      category: "LIMI kolekcia",
-      description:
-        "Jemné tvorenie plné detailov, malých objavov a radosti z každého nalepeného kúsku.",
-      highlights: [
-        "podporuje kreativitu a jemnú motoriku",
-        "vhodné na spoločné tvorivé chvíle",
-        "hravý dizajn pre detskú fantáziu",
-      ],
-      includes: ["produkt z kolekcie LIMI"],
-      stockLabel: "Dostupné online",
-    }
-  );
+export function getProductInfo(handle: string, lang = "sk"): ProductInfo {
+  const info = PRODUCT_INFO_BY_HANDLE[handle as keyof typeof PRODUCT_INFO_BY_HANDLE];
+  const locale = (lang === "en" ? "en" : "sk") as "en" | "sk";
+  
+  if (info) {
+    return info[locale];
+  }
+
+  return {
+    badge: "LIMI",
+    catalogNumber: handle.toUpperCase(),
+    category: locale === "en" ? "LIMI Collection" : "LIMI kolekcia",
+    description: locale === "en" 
+      ? "Gentle creation full of details, small discoveries and joy from every stuck piece."
+      : "Jemné tvorenie plné detailov, malých objavov a radosti z každého nalepeného kúsku.",
+    highlights: locale === "en" ? [
+      "supports creativity and fine motor skills",
+      "suitable for shared creative moments",
+      "playful design for children's imagination",
+    ] : [
+      "podporuje kreativitu a jemnú motoriku",
+      "vhodné na spoločné tvorivé chvíle",
+      "hravý dizajn pre detskú fantáziu",
+    ],
+    includes: locale === "en" ? ["product from the LIMI collection"] : ["produkt z kolekcie LIMI"],
+    stockLabel: locale === "en" ? "Available online" : "Dostupné online",
+  };
 }
 
-export function getProductCollectionImages(handle: string): readonly ProductCollectionImage[] {
-  return (
-    PRODUCT_COLLECTION_IMAGES_BY_HANDLE[
-      handle as keyof typeof PRODUCT_COLLECTION_IMAGES_BY_HANDLE
-    ] ?? []
-  );
+export function getProductTranslation(handle: string, lang = "sk"): { title: string; description: string } | null {
+  const translations = PRODUCT_TRANSLATIONS_BY_HANDLE[handle];
+  if (!translations) return null;
+  return lang === "en" ? translations.en : translations.sk;
+}
+
+export function getProductCollectionImages(handle: string, lang = "sk"): ProductCollectionImage[] {
+  const raw = PRODUCT_COLLECTION_IMAGES_BY_HANDLE[
+    handle as keyof typeof PRODUCT_COLLECTION_IMAGES_BY_HANDLE
+  ];
+  if (!raw) return [];
+  const locale = (lang === "en" ? "en" : "sk") as "en" | "sk";
+  return raw.map((img) => ({
+    src: img.src,
+    alt: typeof img.alt === "string" ? img.alt : img.alt[locale],
+    caption: typeof img.caption === "string" ? img.caption : img.caption[locale],
+    featured: img.featured,
+  }));
 }
 
 export async function listProducts() {
@@ -573,5 +754,3 @@ export async function sendCheckoutNotification(input: {
     body: JSON.stringify(input),
   });
 }
-
-

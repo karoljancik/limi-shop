@@ -8,10 +8,12 @@ export function AddToCartButton({
   variantId,
   disabled = false,
   outOfStock = false,
+  locale = "sk",
 }: {
   variantId: string;
   disabled?: boolean;
   outOfStock?: boolean;
+  locale?: string;
 }) {
   const { refreshCart } = useCart();
   const [message, setMessage] = useState<string | null>(null);
@@ -24,10 +26,10 @@ export function AddToCartButton({
     return (
       <div className="flex flex-col gap-4">
         <button type="button" className="btn-primary opacity-50 cursor-not-allowed" disabled>
-          Vypredané
+          {locale === "en" ? "Sold Out" : "Vypredané"}
         </button>
         <p className="text-sm text-red-500 font-medium">
-          Tento produkt momentálne nie je k dispozícii.
+          {locale === "en" ? "This product is currently unavailable." : "Tento produkt momentálne nie je k dispozícii."}
         </p>
       </div>
     );
@@ -37,14 +39,14 @@ export function AddToCartButton({
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
         <label htmlFor="product-quantity" className="text-sm font-semibold">
-          Počet kusov
+          {locale === "en" ? "Quantity" : "Počet kusov"}
         </label>
         <div className="flex flex-wrap items-center gap-3">
           <div className="flex items-center overflow-hidden rounded-full border border-[var(--line)] bg-white/90 shadow-[0_12px_24px_rgba(194,159,198,0.14)]">
             <button
               type="button"
               className="h-11 w-11 text-xl font-semibold text-[var(--foreground)] transition hover:bg-[rgba(241,196,206,0.24)] disabled:opacity-50"
-              aria-label="Znížiť počet kusov"
+              aria-label={locale === "en" ? "Decrease quantity" : "Znížiť počet kusov"}
               onClick={() => {
                 setQuantity((current) => Math.max(1, current - 1));
               }}
@@ -69,7 +71,7 @@ export function AddToCartButton({
             <button
               type="button"
               className="h-11 w-11 text-xl font-semibold text-[var(--foreground)] transition hover:bg-[rgba(241,196,206,0.24)] disabled:opacity-50"
-              aria-label="Zvýšiť počet kusov"
+              aria-label={locale === "en" ? "Increase quantity" : "Zvýšiť počet kusov"}
               onClick={() => {
                 setQuantity((current) => Math.min(99, current + 1));
               }}
@@ -78,7 +80,9 @@ export function AddToCartButton({
               +
             </button>
           </div>
-          <p className="text-sm text-[var(--muted)]">Vyber si, koľko kusov chceš pridať do košíka.</p>
+          <p className="text-sm text-[var(--muted)]">
+            {locale === "en" ? "Choose how many pieces you want to add to the cart." : "Vyber si, koľko kusov chceš pridať do košíka."}
+          </p>
         </div>
       </div>
 
@@ -91,19 +95,27 @@ export function AddToCartButton({
             try {
               await addVariantToCart(variantId, normalizedQuantity);
               await refreshCart();
-              setMessage(
-                normalizedQuantity === 1
-                  ? "Produkt bol pridaný do košíka."
-                  : `${normalizedQuantity} ks boli pridané do košíka.`
-              );
+              if (locale === "en") {
+                setMessage(
+                  normalizedQuantity === 1
+                    ? "Product was added to the cart."
+                    : `${normalizedQuantity} pcs were added to the cart.`
+                );
+              } else {
+                setMessage(
+                  normalizedQuantity === 1
+                    ? "Produkt bol pridaný do košíka."
+                    : `${normalizedQuantity} ks boli pridané do košíka.`
+                );
+              }
             } catch {
-              setMessage("Nepodarilo sa pridať produkt do košíka.");
+              setMessage(locale === "en" ? "Failed to add product to cart." : "Nepodarilo sa pridať produkt do košíka.");
             }
           });
         }}
         disabled={isPending || disabled}
       >
-        {isPending ? "Pridávam..." : "Pridať do košíka"}
+        {isPending ? (locale === "en" ? "Adding..." : "Pridávam...") : (locale === "en" ? "Add to cart" : "Pridať do košíka")}
       </button>
 
       {message ? <p className="text-sm text-[var(--muted)]">{message}</p> : null}

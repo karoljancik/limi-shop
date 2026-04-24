@@ -5,14 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useCart } from "@/components/cart-provider";
+import { LanguageSwitcher } from "./language-switcher";
 
-const navItems = [
-  { href: "/", label: "Domov" },
-  { href: "/shop", label: "Obchod" },
-  { href: "/kosik", label: "Košík" },
-];
-
-export function SiteHeader() {
+export function SiteHeader({ lang = "sk" }: { lang?: string }) {
   const pathname = usePathname();
   const { itemCount } = useCart();
   const [scrollY, setScrollY] = useState(0);
@@ -30,10 +25,22 @@ export function SiteHeader() {
     };
   }, []);
 
+  const navItems = [
+    { href: `/${lang}`, label: lang === "en" ? "Home" : "Domov" },
+    { href: `/${lang}/shop`, label: lang === "en" ? "Shop" : "Obchod" },
+    { href: `/${lang}/cart`, label: lang === "en" ? "Cart" : "Košík" },
+  ];
+
   const cloudOffset = scrollY * 0.18;
   const bubbleOffset = scrollY * 0.12;
   const sparkleOffset = scrollY * 0.24;
   const isCondensed = scrollY > 24;
+
+  const brandText = lang === "en" 
+    ? "Stickers for small hands and big imagination"
+    : "Nálepky pre malé ruky a veľkú fantáziu";
+  
+  const ctaText = lang === "en" ? "Discover Stickers" : "Objaviť nálepky";
 
   return (
     <header className={`site-header${isCondensed ? " is-condensed" : ""}`}>
@@ -70,7 +77,7 @@ export function SiteHeader() {
       />
 
       <div className="site-header__inner">
-        <Link href="/" className="site-header__brand">
+        <Link href={`/${lang}`} className="site-header__brand">
           <Image
             src="/brand/logos/black_logo.png"
             alt="LiMi"
@@ -80,14 +87,17 @@ export function SiteHeader() {
             priority
           />
           <span className="site-header__brand-text">
-            Nálepky pre malé ruky a veľkú fantáziu
+            {brandText}
           </span>
         </Link>
 
         <nav className="site-header__nav" aria-label="Hlavná navigácia">
+          <div className="mr-4">
+            <LanguageSwitcher currentLocale={lang} />
+          </div>
           {navItems.map((item) => {
             const isActive =
-              item.href === "/"
+              item.href === `/${lang}`
                 ? pathname === item.href
                 : pathname.startsWith(item.href);
 
@@ -98,14 +108,14 @@ export function SiteHeader() {
                 className={`site-header__nav-link${isActive ? " is-active" : ""}`}
               >
                 {item.label}
-                {item.href === "/kosik" && itemCount > 0 && (
+                {item.href.includes("/cart") && itemCount > 0 && (
                   <span className="site-header__cart-badge">{itemCount}</span>
                 )}
               </Link>
             );
           })}
-          <Link href="/shop" className="site-header__cta">
-            Objaviť nálepky
+          <Link href={`/${lang}/shop`} className="site-header__cta">
+            {ctaText}
           </Link>
         </nav>
       </div>

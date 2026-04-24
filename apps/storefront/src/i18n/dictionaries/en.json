@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "cart": "Cart",
+    "discover": "Explore Stickers"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Limi Stickers",
+      "title": "Stickers that invite you into a world of small stories.",
+      "description": "Soft colors, sweet motifs, and creative play that lets children and parents relax together.",
+      "cta_shop": "Explore Stickers",
+      "cta_cart": "View Cart"
+    },
+    "featured": {
+      "eyebrow": "Featured Products",
+      "title": "Tiny Worlds to Discover",
+      "all_products": "All Products",
+      "more_info": "More about the sticker"
+    }
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty",
+    "checkout": "Continue to checkout",
+    "total": "Total"
+  },
+  "common": {
+    "currency": "EUR",
+    "languages": {
+      "sk": "Slovak",
+      "en": "English"
+    }
+  }
+}

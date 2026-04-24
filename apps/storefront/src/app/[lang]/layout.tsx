@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { CartProvider } from "@/components/cart-provider";
 import { CookieBanner } from "@/components/cookie-banner";
-import "./globals.css";
+import "../globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,25 +15,39 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Limi",
-  description: "Hravé 3D nálepky pre pokojné tvorenie a detskú fantáziu.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  return {
+    title: "Limi",
+    description:
+      lang === "en"
+        ? "Playful 3D stickers for peaceful creation and children's imagination."
+        : "Hravé 3D nálepky pre pokojné tvorenie a detskú fantáziu.",
+  };
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ lang: string }>;
 }>) {
+  const { lang } = await params;
+
   return (
     <html
-      lang="sk"
+      lang={lang}
       data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
         <CartProvider>
-          <SiteHeader />
+          <SiteHeader lang={lang} />
           <main className="flex-1">{children}</main>
           <CookieBanner />
         </CartProvider>
