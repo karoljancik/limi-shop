@@ -2,16 +2,25 @@ FROM node:20-alpine
 
 RUN apk add --no-cache libc6-compat
 
+# Create user and group early
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 medusa
+
 WORKDIR /app
 
-# Install backend dependencies in an isolated app root to avoid workspace resolution issues.
-COPY apps/backend/package.json ./
-COPY apps/backend/package-lock.json ./
-COPY apps/backend/.npmrc ./
+# Ensure /app is owned by medusa before we start copying
+RUN chown medusa:nodejs /app
+
+USER medusa
+
+# Install backend dependencies as 'medusa' user
+COPY --chown=medusa:nodejs apps/backend/package.json ./
+COPY --chown=medusa:nodejs apps/backend/package-lock.json ./
+COPY --chown=medusa:nodejs apps/backend/.npmrc ./
 RUN npm install
 
-# Copy the backend source after dependencies are installed for better layer caching.
-COPY apps/backend/ ./
+# Copy the backend source as 'medusa' user
+COPY --chown=medusa:nodejs apps/backend/ ./
 
 ENV NODE_ENV=production
 ENV MEDUSA_ADMIN_ONBOARDING_TYPE=none
@@ -24,18 +33,14 @@ ENV REDIS_URL=redis://localhost:6379
 ENV JWT_SECRET=temp_secret
 ENV COOKIE_SECRET=temp_secret
 
-# Replace the checked-in admin bundle with the freshly built Medusa admin output.
+# Build as 'medusa' user - no chown needed afterward
 RUN rm -rf ./public/admin \
   && npx medusa build \
   && mkdir -p ./public \
   && cp -R ./.medusa/server/public/admin ./public/admin
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 medusa
-RUN chown -R medusa:nodejs /app
 RUN chmod +x ./entrypoint.sh
 
-USER medusa
 EXPOSE 9000
 
 CMD ["./entrypoint.sh"]
